@@ -12,7 +12,6 @@ public static class GameData
 
     public enum Event
     {
-        PlayerMove,
         GameOver,
         AdditiveJustFinishLoad, //used by SceneManagerGlobal
         ResolutionChange,   //used by UILandscape

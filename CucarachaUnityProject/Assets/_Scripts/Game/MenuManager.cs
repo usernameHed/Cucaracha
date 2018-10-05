@@ -8,4 +8,14 @@ public class MenuManager : MonoBehaviour, ILevelLocal
     {
         Debug.Log("INIT MenuManager !!");
     }
+
+    public void Play()
+    {
+        GameManager.Instance.SceneManagerLocal.PlayNext();
+    }
+
+    public void Quit()
+    {
+        GameManager.Instance.SceneManagerLocal.Quit();
+    }
 }

@@ -19,34 +19,24 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     }
 
     /// <summary>
-    /// called by game, or 
+    /// called by game
     /// </summary>
-    public void RestartGame()
+    public void Back()
     {
         GameManager.Instance.SceneManagerLocal.PlayPrevious();
     }
 
     /// <summary>
-    /// called by game, or 
+    /// restart scene with fade
     /// </summary>
-    public void QuitGame()
-    {
-        GameManager.Instance.SceneManagerLocal.Quit();
-    }
-
-    private void NextLevel()
+    public void Restart()
     {
         GameManager.Instance.SceneManagerLocal.PlayNext();
     }
 
     private void GameOver()
     {
-
-    }
-
-    private void Update()
-    {
-
+        
     }
 
     private void OnDisable()
