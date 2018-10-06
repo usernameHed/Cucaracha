@@ -8,3 +8,13 @@ public struct Point
         y = py;
     }
 }
+
+public struct Pointf
+{
+    public float x, y;
+    public Pointf(float px, float py)
+    {
+        x = px;
+        y = py;
+    }
+}

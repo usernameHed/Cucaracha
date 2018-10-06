@@ -29,5 +29,17 @@ public static class ExtRandom
         System.Random random = new System.Random();
         return random.Next() * (maximum - minimum) + minimum;
     }
+
+    /// <summary>
+    /// return 1 or -1
+    /// </summary>
+    /// <returns></returns>
+    public static int RandomNegative()
+    {
+        int negative = UnityEngine.Random.Range(0, 2);
+        if (negative == 0)
+            return (-1);
+        return (1);
+    }
     #endregion
 }

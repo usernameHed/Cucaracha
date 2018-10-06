@@ -13,36 +13,32 @@ public static class GameData
     public enum Event
     {
         GameOver,
+        GameWin,
         AdditiveJustFinishLoad, //used by SceneManagerGlobal
-        ResolutionChange,   //used by UILandscape
     };
 
     public enum Prefabs
     {
         Link,
-        Player,
+        Cucaracha,
     };
 
     public enum PoolTag
     {
-        ParticleBump,
-        Link,
-        ParticleRopeTense,
+        Cucaracha,
     }
 
     public enum Layers
     {
-        Player,
-        Obstacle,
+        Cucaracha,
+        Wall,
         Default,
         Object,
     }
 
     public enum Sounds
     {
-        Bump,
-        SpiksOn,
-        SpiksOff,
+
     }
 
     /// <summary>
