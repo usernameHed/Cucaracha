@@ -13,4 +13,20 @@ public class IACucaracha : MonoBehaviour
     [SerializeField]
     private int state = 0;
     public int State { get { return (state); } set { state = value; } }
+
+    [SerializeField]
+    private float sinVal = 0;
+    public float sinValue { get { return (sinVal); } set { sinVal = value; } }
+
+    
+    public void Init()
+    {
+        sinVal = Random.Range(0.0f, 2 * Mathf.PI);
+    }
+
+
+    private void Start()
+    {
+        Init();
+    }
 }

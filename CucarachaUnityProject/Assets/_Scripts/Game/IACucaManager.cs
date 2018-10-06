@@ -15,6 +15,8 @@ public class IACucaManager : MonoBehaviour
         Food foodInfo;
         Lamp lightInfo;
         Vector3 vectDir;
+        Vector2 stopVect;
+        float sinVal;
 
         for (int i = 0; i < cucarachas.Count; i++)
         {
@@ -23,7 +25,10 @@ public class IACucaManager : MonoBehaviour
 
             int randInt = 0;
             
-          
+            if (i == 0)
+            {
+                Debug.Log(cuca.GetIA().sinValue);
+            }
             switch(state)
             {
 
@@ -31,6 +36,7 @@ public class IACucaManager : MonoBehaviour
                 //===---
                 case 0:         //Don't move
                     {
+                        stopVect = cuca.transform.position;
                         cuca.ChangeDirectionIA(new Vector2(0, 0));
 
                         if (cuca.isInsideLight)
@@ -43,7 +49,7 @@ public class IACucaManager : MonoBehaviour
                         }
                         else
                         {
-                            randInt = Random.Range(0, 2);
+                            randInt = Random.Range(0,5);
 
                             if (randInt == 1)
                             {
@@ -56,7 +62,10 @@ public class IACucaManager : MonoBehaviour
                 case 1:         //Crawl
                     {
 
-                        cuca.ChangeDirectionIA(new Vector2(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f)));
+                        sinVal = cuca.GetIA().sinValue;
+
+
+                        cuca.ChangeDirectionIA(new Vector2(Mathf.Sin(sinVal)/5, Mathf.Sin(sinVal))/5);
 
                         if (cuca.isInsideLight)
                         {
@@ -70,6 +79,16 @@ public class IACucaManager : MonoBehaviour
                         {
                            state = 0;                          
                         }
+
+                        if (sinVal + (2*Mathf.PI)/10 > 2*Mathf.PI)
+                        {
+                            cuca.GetIA().sinValue = 0.0f ;
+                        }
+                        else
+                        {
+                            cuca.GetIA().sinValue += 0.01f;
+                        }
+
                         break;
                     }
                 //===---
