@@ -279,6 +279,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1712303509081222, guid: f3fc596a59b3b7448b3b1b2585db282e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3fc596a59b3b7448b3b1b2585db282e, type: 2}
   m_IsPrefabAsset: 0
@@ -325,6 +329,10 @@ Prefab:
     - target: {fileID: 4155136571076448, guid: c617f60f3cf8ba34aa6c1e6e6ce55468, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266910365887574, guid: c617f60f3cf8ba34aa6c1e6e6ce55468, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c617f60f3cf8ba34aa6c1e6e6ce55468, type: 2}
@@ -564,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b6b9f8fadeb9c4daeafeab342a4ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iLevelLocal: {fileID: 0}
+  iLevelLocal: {fileID: 98490781}
 --- !u!1 &1347437412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1386,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114415886936971834, guid: dfb7f32e7fc14334a8640e27502e264c,
+        type: 2}
+      propertyPath: pools.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4217753727906640, guid: dfb7f32e7fc14334a8640e27502e264c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0

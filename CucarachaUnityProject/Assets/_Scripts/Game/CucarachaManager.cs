@@ -6,7 +6,6 @@ using System.Collections.Generic;
 [TypeInfoBox("[ILevelLocal] Manage Setup Scene behaviour")]
 public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 {
-
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.GameOver, GameOver);
@@ -34,9 +33,15 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         GameManager.Instance.SceneManagerLocal.PlayNext();
     }
 
+    [Button]
+    public void TriggerGameOver()
+    {
+        EventManager.TriggerEvent(GameData.Event.GameOver);
+    }
+
     private void GameOver()
     {
-        
+        Debug.Log("ici game over !");    
     }
 
     private void OnDisable()
