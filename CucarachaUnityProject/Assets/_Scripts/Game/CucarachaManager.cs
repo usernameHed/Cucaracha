@@ -9,6 +9,9 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     [SerializeField]
     private int numberCucarachaLevel = 300;
 
+    [SerializeField]
+    private FrequencyTimer frequency;
+
     [Space(10)]
 
     [SerializeField]
@@ -67,6 +70,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     {
         Debug.Log("INIT Cucaracha manager ! !!");
         cucarachas.Clear();
+        FoodManager.Instance.Init();
         spawner.SpawnCuca(numberCucarachaLevel);
     }
 
@@ -116,6 +120,10 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     private void Update()
     {
-        iaManager.Machine();
+        if (frequency.Ready())
+        {
+            //Debug.Log("launch machine");
+            iaManager.Machine();
+        }
     }
 }

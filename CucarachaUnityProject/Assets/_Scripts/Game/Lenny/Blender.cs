@@ -28,7 +28,7 @@ public class Blender : MonoBehaviour
 
       Debug.Log("Juice quantity : " + juiceQuantity);
 
-      
+
 
       if (juiceQuantity > maximumScore) {
         Debug.Log("It's over 9000 ! ");
@@ -38,7 +38,7 @@ public class Blender : MonoBehaviour
 
       Debug.Log("Cucaracha is dead with Blender");
     }
-    
+
   }
 
   void changeSlider()

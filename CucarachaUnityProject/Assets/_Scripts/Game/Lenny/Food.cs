@@ -14,7 +14,13 @@ public class Food : MonoBehaviour, IKillable
     {
         if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
-            CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            CucarachaController cuca = other.gameObject.GetComponentInParent<CucarachaController>();
+            if (cuca == null)
+            {
+                cuca = other.transform.parent.GetComponent<CucarachaController>();
+            }
+
+            //if ()
             //Debug.Log("Cucaracha follow the food");
             cuca.SetInsideFood(true, this);
         }
@@ -28,13 +34,17 @@ public class Food : MonoBehaviour, IKillable
         if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
             CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            if (cuca == null)
+            {
+                cuca = other.transform.parent.GetComponent<CucarachaController>();
+            }
             cuca.SetInsideFood(false, null);
         }
     }
 
     public void Kill()
     {
-
         CucarachaManager.Instance.RemoveFood(this);
+        Destroy(gameObject);
     }
 }

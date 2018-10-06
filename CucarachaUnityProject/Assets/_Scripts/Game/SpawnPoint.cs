@@ -10,6 +10,17 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField]
     private List<Transform> spawnPoint = new List<Transform>();
 
+    private void Start()
+    {
+        /*
+        spawnPoint.Clear();
+        foreach (Transform child in transform)
+        {
+            spawnPoint.Add(child);
+        }
+        */
+    }
+
     /// <summary>
     /// called for getting a player position
     /// </summary>
