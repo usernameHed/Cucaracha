@@ -10,19 +10,53 @@ public class Lamp : MonoBehaviour, IKillable
     [SerializeField]
     private GameObject lightObject;
 
+    private List<CucarachaController> cucaInside = new List<CucarachaController>();
+
+
     // Use this for initialization
     private void OnEnable()
     {
         ActiveLight(false);
         CucarachaManager.Instance.AddLamp(this);
+        cucaInside.Clear();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
+        if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()) && lightOn)
         {
-
+            CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            if (cuca == null)
+            {
+                cuca = other.transform.parent.GetComponent<CucarachaController>();
+            }
+            cuca.SetInsideLamp(true, this);
+            if (!cucaInside.Contains(cuca))
+                cucaInside.Add(cuca);
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()) && lightOn)
+        {
+            CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            if (cuca == null)
+            {
+                cuca = other.transform.parent.GetComponent<CucarachaController>();
+            }
+            cuca.SetInsideLamp(false, null);
+            cucaInside.Remove(cuca);
+        }
+    }
+
+    private void ResetCuca()
+    {
+        for (int i = 0; i < cucaInside.Count; i++)
+        {
+            cucaInside[i].SetInsideLamp(false, null);
+        }
+        cucaInside.Clear();
     }
 
     /// <summary>
@@ -39,6 +73,8 @@ public class Lamp : MonoBehaviour, IKillable
     private void ActiveLight(bool active)
     {
         lightOn = active;
+        if (!active)
+            ResetCuca();
         //Debug.Log("light changed");
         lightObject.SetActive(active);
     }

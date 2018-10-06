@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class IACucaracha : MonoBehaviour
 {
-    [SerializeField]
-    private CucarachaController cuca;
-    public CucarachaController GetCucarachaController() { return (cuca); }
-
     private float randVal;
 
     [SerializeField]
