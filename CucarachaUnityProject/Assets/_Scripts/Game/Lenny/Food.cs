@@ -15,6 +15,8 @@ public class Food : MonoBehaviour, IKillable{
   {
     if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
       //GameData
+      CucarachaController cuca = collision.gameObject.GetComponent<CucarachaController>();
+
       Debug.Log("Cucaracha follow the food");
     }
 
