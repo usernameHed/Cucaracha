@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlenderAndTrap : MonoBehaviour {
-  public bool isBlender;
+public class Blender : MonoBehaviour {
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,14 +13,11 @@ public class BlenderAndTrap : MonoBehaviour {
 	void Update () {
 		
 	}
-
   private void OnTriggerEnter(Collider collision)
   {
-    if (collision.gameObject.tag == "Cucaracha" && isBlender == true) {
+    if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
       Debug.Log("Cucaracha is dead with Blender");
     }
-    else if (collision.gameObject.tag == "Cucaracha" && isBlender == false) {
-      Debug.Log("Cucaracha is dead with trap");
-    }
+    
   }
 }

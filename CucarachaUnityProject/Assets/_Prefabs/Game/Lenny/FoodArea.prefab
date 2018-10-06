@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4730772100049610}
   - component: {fileID: 135004947738367894}
-  - component: {fileID: 114524410295446924}
+  - component: {fileID: 114126250165854578}
   m_Layer: 11
   m_Name: FoodArea
   m_TagString: Untagged
@@ -39,9 +39,10 @@ GameObject:
   - component: {fileID: 33223105240829904}
   - component: {fileID: 23841032521658434}
   - component: {fileID: 65127413850550086}
+  - component: {fileID: 114045286376970116}
   m_Layer: 11
   m_Name: food
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,12 +123,23 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680630111234472}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114524410295446924
+--- !u!114 &114045286376970116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680630111234472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488200e323bdcac4a918b0a454c59953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114126250165854578
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,10 +147,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1647027819164116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ddb14032054bda4f8039997fbb4ce87, type: 3}
+  m_Script: {fileID: 11500000, guid: c76c5a2602821444095db55694068a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFood: 1
 --- !u!135 &135004947738367894
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -35,6 +35,7 @@ public static class GameData
         Wall,
         Default,
         Object,
+        Food,
     }
 
     public enum Sounds
