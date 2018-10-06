@@ -329,7 +329,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6dbf5774bea124e8b6136842b04280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools: []
+  pools:
+  - tag: 0
+    prefab: {fileID: 1462658937139620, guid: a7ca044746f1a7e498ffae7855c207e1, type: 2}
+    size: 300
+    shouldExpand: 0
 --- !u!114 &114495011466167138
 MonoBehaviour:
   m_ObjectHideFlags: 1
