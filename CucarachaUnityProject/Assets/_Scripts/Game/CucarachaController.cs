@@ -15,9 +15,9 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [ReadOnly]
     public bool isInsideLight = false;
     [SerializeField, ReadOnly]
-    private Food refFood = null;
+    public Food refFood = null;
     [SerializeField, ReadOnly]
-    private Lamp refLamp = null;
+    public Lamp refLamp = null;
 
     public Food GetFood() { return (refFood); }
     public Lamp GetLamp() { return (refLamp); }
