@@ -19,7 +19,9 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     public List<CucarachaController> GetCurarachaList() { return (cucarachas); }
 
     [SerializeField, ReadOnly]
-    private List<FoodAndLight> foodAndLight = new List<FoodAndLight>();
+    private List<FoodAndLight> food = new List<FoodAndLight>();
+    //[SerializeField]
+    //private LightGame lightGame;
 
     public void AddCucaracha(CucarachaController cuca)
     {
@@ -40,12 +42,12 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     public void AddFoodOrLight(FoodAndLight item)
     {
-        if (!foodAndLight.Contains(item))
-            foodAndLight.Add(item);
+        if (!food.Contains(item))
+            food.Add(item);
     }
     public void RemoveFoodOrLight(FoodAndLight item)
     {
-        foodAndLight.Remove(item);
+        food.Remove(item);
     }
 
     public void InitScene()
