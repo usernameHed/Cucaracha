@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LifeFood : MonoBehaviour, IKillable
 {
+    [SerializeField]
+    private float timeBetweenEat = 0.1f;
+
     int lifeFood = 100;
     float timerFood;
 
@@ -21,10 +24,10 @@ public class LifeFood : MonoBehaviour, IKillable
         if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
             //GameData
-            if ( Time.fixedTime > timerFood + 0.5f )
+            if ( Time.fixedTime > timerFood + timeBetweenEat)
             {
                 lifeFood--;
-                timerFood = Time.fixedTime + 0.5f;
+                timerFood = Time.fixedTime + timeBetweenEat;
                 Debug.Log("life food : " + lifeFood);
             }
 
