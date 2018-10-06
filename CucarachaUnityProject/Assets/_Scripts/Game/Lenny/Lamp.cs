@@ -39,7 +39,7 @@ public class Lamp : MonoBehaviour, IKillable
     private void ActiveLight(bool active)
     {
         lightOn = active;
-        Debug.Log("light changed");
+        //Debug.Log("light changed");
         lightObject.SetActive(active);
     }
 

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4217380627348334}
   - component: {fileID: 114212867289460366}
   - component: {fileID: 114260041049717014}
+  - component: {fileID: 114398017827106416}
   m_Layer: 0
   m_Name: CucarachaManager
   m_TagString: Untagged
@@ -53,6 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberCucarachaLevel: 500
+  frequency:
+    updateFrequency: 0.5
+    notTheFirstTime: 0
+    waitOnlyOnce: 0
   spawner: {fileID: 0}
   cucarachas: []
   iaManager: {fileID: 114260041049717014}
@@ -69,3 +74,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42052834bdfe194385111367e487ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114398017827106416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213090012335016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09fe2faa22b39fc48839b9141c259bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodUI:
+  - {fileID: 0}
+  - {fileID: 0}

@@ -282,20 +282,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4217380627348334, guid: 75c81b1887c57634ea9dbeb9a4f551df,
     type: 2}
   m_PrefabInternal: {fileID: 181173949}
---- !u!114 &169297295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 169297293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09fe2faa22b39fc48839b9141c259bfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodUI:
-  - {fileID: 1028056292}
-  - {fileID: 1692716229}
 --- !u!1001 &181173949
 Prefab:
   m_ObjectHideFlags: 0
@@ -303,11 +289,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 206968306}
     m_Modifications:
-    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
-        type: 2}
-      propertyPath: foodUI.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4217380627348334, guid: 75c81b1887c57634ea9dbeb9a4f551df, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -340,26 +321,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
-        type: 2}
-      propertyPath: spawner
-      value: 
-      objectReference: {fileID: 7621502}
-    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
         type: 2}
       propertyPath: foodUI.Array.data[0]
       value: 
       objectReference: {fileID: 1028056292}
-    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
         type: 2}
       propertyPath: foodUI.Array.data[1]
       value: 
       objectReference: {fileID: 1692716229}
     - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
         type: 2}
-      propertyPath: frequency.updateFrequency
-      value: 0.5
-      objectReference: {fileID: 0}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 7621502}
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: prefabsFood
+      value: 
+      objectReference: {fileID: 1647027819164116, guid: f89fdf98d37a6a84ca9c4b673041c34f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c81b1887c57634ea9dbeb9a4f551df, type: 2}
   m_IsPrefabAsset: 0
@@ -2075,7 +2057,7 @@ Prefab:
     - target: {fileID: 114666606268647992, guid: 30f3f8d36cb63e74ca1d758c7ed8143a,
         type: 2}
       propertyPath: isFilled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30f3f8d36cb63e74ca1d758c7ed8143a, type: 2}

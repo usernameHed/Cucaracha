@@ -122,7 +122,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     {
         if (frequency.Ready())
         {
-            Debug.Log("launch machine");
+            //Debug.Log("launch machine");
             iaManager.Machine();
         }
     }
