@@ -19,10 +19,11 @@ public class FoodAndLight : MonoBehaviour {
 
   private void OnTriggerEnter(Collider collision)
   {
-    if (collision.gameObject.tag == "Cucaracha" && isFood == true) {
+    if (collision.gameObject.CompareTag (GameData.Layers.Cucaracha.ToString()) && isFood == true) {
+      //GameData
       Debug.Log("Cucaracha follow the food");
     }
-    else if (collision.gameObject.tag == "Cucaracha" && isFood == false) {
+    else if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()) && isFood == false) {
       Debug.Log("Cucaracha flees the light");
     }
   }

@@ -26,6 +26,7 @@ public static class GameData
     public enum PoolTag
     {
         Cucaracha,
+        DeathCucaracha,
     }
 
     public enum Layers
