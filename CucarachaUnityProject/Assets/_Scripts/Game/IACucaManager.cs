@@ -34,10 +34,11 @@ public class IACucaManager : MonoBehaviour
                 //===---
                 case 0:         //Don't move
                     {
-                        stopVect = new Vector2(cuca.transform.forward.x, cuca.transform.forward.z);
+                        stopVect = new Vector2(cuca.rb.transform.forward.x, cuca.rb.transform.forward.y);
                         cuca.ChangeDirectionIA(new Vector2(stopVect.x*0.001f, stopVect.y * 0.001f));
 
-                        Debug.Log(stopVect.x);
+                        Debug.Log(stopVect.x + " " + stopVect.y);
+                        Debug.DrawRay(cuca.rb.transform.position, stopVect, Color.red, 1f);
                         
 
                         if (cuca.isInsideLight)

@@ -24,8 +24,8 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
     [Space(10)]
 
-    [SerializeField]
-    private Rigidbody rb;                   //link to rigidbody
+    
+    public Rigidbody rb;                   //link to rigidbody
     [SerializeField]
     private Animator animator;
     [SerializeField]
