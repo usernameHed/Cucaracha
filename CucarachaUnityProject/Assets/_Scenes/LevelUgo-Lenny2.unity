@@ -163,6 +163,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114078751516669250, guid: 0ce2f412ecd297846b6d1dba36024954,
+        type: 2}
+      propertyPath: Slider
+      value: 
+      objectReference: {fileID: 1962221046}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ce2f412ecd297846b6d1dba36024954, type: 2}
   m_IsPrefabAsset: 0
@@ -550,7 +555,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1232701662164272, guid: 4b2d6bb38445c2242827aa3351dd092d, type: 2}
       propertyPath: m_Name
-      value: Canvas (1)
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 114979912910987282, guid: 4b2d6bb38445c2242827aa3351dd092d,
         type: 2}
@@ -1930,6 +1935,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833890220}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1962221046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1274172876014454, guid: 4b2d6bb38445c2242827aa3351dd092d,
+    type: 2}
+  m_PrefabInternal: {fileID: 370344376}
 --- !u!1001 &1991537767
 Prefab:
   m_ObjectHideFlags: 0
