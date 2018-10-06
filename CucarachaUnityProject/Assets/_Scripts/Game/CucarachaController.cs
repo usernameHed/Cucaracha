@@ -16,6 +16,9 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     private Rigidbody rb;                   //link to rigidbody
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private IACucaracha ia;
+    public IACucaracha GetIA() { return (ia); }
 
     private float horiz = 0;                //move horiz input
     private float verti = 0;

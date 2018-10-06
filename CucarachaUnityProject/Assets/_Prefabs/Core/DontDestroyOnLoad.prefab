@@ -332,7 +332,7 @@ MonoBehaviour:
   pools:
   - tag: 0
     prefab: {fileID: 1462658937139620, guid: a7ca044746f1a7e498ffae7855c207e1, type: 2}
-    size: 300
+    size: 1000
     shouldExpand: 1
 --- !u!114 &114495011466167138
 MonoBehaviour:

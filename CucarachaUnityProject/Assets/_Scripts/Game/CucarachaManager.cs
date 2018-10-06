@@ -48,6 +48,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         for (int i = 0; i < cucarachas.Count; i++)
         {
             CucarachaController cuca = cucarachas[i];
+            //cuca.GetIA().
             Vector2 dir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
             cuca.ChangeDirectionIA(dir);
         }
