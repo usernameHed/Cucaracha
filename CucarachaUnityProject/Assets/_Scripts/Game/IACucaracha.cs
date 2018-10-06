@@ -17,7 +17,7 @@ public class IACucaracha : MonoBehaviour
     
     public void Init()
     {
-        sinVal = Random.Range(0.0f, 2 * Mathf.PI);
+        sinVal = Random.Range(0.0f, 2.0f * Mathf.PI);
     }
 
 
