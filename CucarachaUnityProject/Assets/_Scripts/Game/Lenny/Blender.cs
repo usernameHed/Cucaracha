@@ -10,13 +10,15 @@ public class Blender : MonoBehaviour
   private float maximumScore;
 
   // Use this for initialization
-  void Start () {
+  void Start()
+  {
     changeSlider();
     maximumScore = Slider.GetComponent<Slider>().maxValue;
   }
 
   // Update is called once per frame
-  void Update () {
+  void Update()
+  {
 
   }
   private void OnTriggerEnter(Collider collision)
