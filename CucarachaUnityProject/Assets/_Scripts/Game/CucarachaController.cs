@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CucarachaController : SingletonMono<CucarachaController>, IPooledObject, IKillable
+public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 {
     [SerializeField]
     private float speedPlayer = 5;          //speed of player
@@ -60,6 +60,16 @@ public class CucarachaController : SingletonMono<CucarachaController>, IPooledOb
     /// move in physics, according to input of player
     /// </summary>
     private void MovePlayer()
+    {
+       if (hasMoved)
+       {
+            UnityMovement.MoveByForcePushing_WithPhysics(rb, rb.transform.forward, speedPlayer * verti * Time.deltaTime);
+            rb.transform.Rotate(new Vector3(0, horiz, 0) * (rotationSpeed * Time.deltaTime));
+            //rb.transform.rotation = ExtQuaternion.DirObject(rb.transform.rotation, horiz, verti, rotationSpeed, ExtQuaternion.TurnType.Y);
+       } 
+    }
+
+    private void Turn()
     {
 
     }
