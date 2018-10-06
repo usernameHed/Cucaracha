@@ -38,6 +38,16 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         EventManager.StartListening(GameData.Event.GameOver, GameOver);
     }
 
+    public void AddFoodOrLight(FoodAndLight item)
+    {
+        if (!foodAndLight.Contains(item))
+            foodAndLight.Add(item);
+    }
+    public void RemoveFoodOrLight(FoodAndLight item)
+    {
+        foodAndLight.Remove(item);
+    }
+
     public void InitScene()
     {
         Debug.Log("INIT Cucaracha manager ! !!");
