@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : SingletonMono<PlayerController>
+public class PlayerController : SingletonMono<PlayerController>, IPooledObject
 {
     [SerializeField]
-    private Rigidbody rb;                   //link to rigidbody
-    [SerializeField]
     private float speedPlayer = 5;          //speed of player
+    [SerializeField]
+    private float rotationSpeed = 5;          //rotation speed of player
+
+    [Space(10)]
+
+    [SerializeField]
+    private Rigidbody rb;                   //link to rigidbody
     [SerializeField]
     private Animator animator;
 
@@ -21,6 +26,12 @@ public class PlayerController : SingletonMono<PlayerController>
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.GameOver, GameOver);
+        //EventManager.StartListening(GameData.Event.GameWin, GameOver);
+    }
+
+    public void OnObjectSpawn()
+    {
+
     }
 
     private void Start()
@@ -86,5 +97,13 @@ public class PlayerController : SingletonMono<PlayerController>
     private void OnDisable()
     {
         EventManager.StopListening(GameData.Event.GameOver, GameOver);
+        //EventManager.StopListening(GameData.Event.GameOver, GameWin);
+    }
+
+
+
+    public void OnDesactivePool()
+    {
+        
     }
 }
