@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class LifeFood : MonoBehaviour, IKillable {
   int lifeFood = 100;
-  
+  float timerFood;
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    timerFood = Time.fixedTime;
+
+  }
+
+  // Update is called once per frame
+  void Update () {
+   // Debug.Log("Time delta time : " + Time.deltaTime);
+
+  }
 
   private void OnTriggerStay(Collider collision)
   {
+
     if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
+
       //GameData
-      lifeFood--;
-      Debug.Log("life Food : " + lifeFood);
+      if ( Time.fixedTime > timerFood + 0.5f ) {
+        lifeFood--;
+        timerFood = Time.fixedTime + 0.5f;
+        Debug.Log("life food : " + lifeFood);
+
+      }
+
+
       if (lifeFood <= 0) {
         lifeFood = 0;
         Kill();

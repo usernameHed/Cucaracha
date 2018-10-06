@@ -8,6 +8,7 @@ TagManager:
   - Cucaracha
   - Object
   - Wall
+  - Food
   layers:
   - Default
   - TransparentFX
