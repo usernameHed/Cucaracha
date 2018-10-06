@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : SingletonMono<PlayerController>, IPooledObject
+public class CucarachaController : SingletonMono<CucarachaController>, IPooledObject, IKillable
 {
     [SerializeField]
     private float speedPlayer = 5;          //speed of player
@@ -31,7 +31,7 @@ public class PlayerController : SingletonMono<PlayerController>, IPooledObject
 
     public void OnObjectSpawn()
     {
-
+        CucarachaManager.Instance.GetCurarachaList().Add(this);
     }
 
     private void Start()
@@ -105,5 +105,12 @@ public class PlayerController : SingletonMono<PlayerController>, IPooledObject
     public void OnDesactivePool()
     {
         
+    }
+
+    public void Kill()
+    {
+        CucarachaManager.Instance.GetCurarachaList().Remove(this);
+        transform.SetParent(ObjectsPooler.Instance.transform);
+        gameObject.SetActive(false);
     }
 }

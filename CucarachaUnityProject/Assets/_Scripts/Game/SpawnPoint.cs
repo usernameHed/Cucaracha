@@ -14,7 +14,7 @@ public class SpawnPoint : MonoBehaviour
     /// called for getting a player position
     /// </summary>
     /// <returns></returns>
-    public Pointf GetPosSpawn()
+    public Vector3 GetPosSpawn()
     {
         Pointf point = new Pointf(0.0f, 0.0f);
 
@@ -22,8 +22,20 @@ public class SpawnPoint : MonoBehaviour
         point.x = spawnPoint[randomList].position.x + (UnityEngine.Random.Range(0.0f, rangeSpawn) * ExtRandom.RandomNegative());
         point.y = spawnPoint[randomList].position.z + (UnityEngine.Random.Range(0.0f, rangeSpawn) * ExtRandom.RandomNegative());
 
-        return (point);
+        return (new Vector3(point.x, 0, point.y));
     }
 
+    /// <summary>
+    /// called spawn
+    /// </summary>
+    public List<CucarachaController> SpawnToList(int number)
+    {
+        List<CucarachaController> curaracha = new List<CucarachaController>();
+        for (int i = 0; i < number; i++)
+        {
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Cucaracha, GetPosSpawn(), Quaternion.identity, CucarachaManager.Instance.transform);
+        }
+        return (curaracha);
+    }
     
 }

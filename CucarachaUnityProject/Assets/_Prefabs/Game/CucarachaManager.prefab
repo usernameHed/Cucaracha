@@ -51,3 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ddb8c0c6f5e8b4fa9bcb3ef6d4e54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberCucarachaLevel: 300
+  spawner: {fileID: 0}
+  cucarachas: []
