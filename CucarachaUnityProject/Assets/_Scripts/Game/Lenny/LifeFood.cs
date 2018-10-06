@@ -7,13 +7,13 @@ public class LifeFood : MonoBehaviour, IKillable {
   float timerFood;
 	// Use this for initialization
 	void Start () {
-    timerFood = Time.deltaTime;
+    timerFood = Time.fixedTime;
 
   }
 
   // Update is called once per frame
   void Update () {
-    Debug.Log("timer Food : " + timerFood);
+   // Debug.Log("Time delta time : " + Time.deltaTime);
 
   }
 
@@ -23,10 +23,10 @@ public class LifeFood : MonoBehaviour, IKillable {
     if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
 
       //GameData
-      if ( Time.deltaTime > timerFood + 0.5f ) {
+      if ( Time.fixedTime > timerFood + 0.5f ) {
         lifeFood--;
-        timerFood = Time.deltaTime +0.5f;
-        Debug.Log("life Food : " + lifeFood);
+        timerFood = Time.fixedTime + 0.5f;
+        Debug.Log("life food : " + lifeFood);
 
       }
 
