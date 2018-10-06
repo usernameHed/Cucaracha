@@ -24,28 +24,31 @@ public class IACucaManager : MonoBehaviour
             state = cuca.GetIA().State;
 
             int randInt = 0;
-            
-            if (i == 0)
-            {
-                Debug.Log(cuca.GetIA().sinValue);
-            }
-            switch(state)
+
+           // Debug.Log(state);
+           
+            switch (state)
             {
 
                 // IDLE
                 //===---
                 case 0:         //Don't move
                     {
-                        stopVect = cuca.transform.position;
-                        cuca.ChangeDirectionIA(new Vector2(0, 0));
+                        stopVect = new Vector2(cuca.transform.forward.x, cuca.transform.forward.z);
+                        cuca.ChangeDirectionIA(new Vector2(stopVect.x*0.001f, stopVect.y * 0.001f));
+
+                        Debug.Log(stopVect.x);
+                        
 
                         if (cuca.isInsideLight)
                         {
                             state = 4;
+                            break;
                         }
                         else if (cuca.isInsideFood)
                         {
                             state = 2;
+                            break;
                         }
                         else
                         {
@@ -54,6 +57,7 @@ public class IACucaManager : MonoBehaviour
                             if (randInt == 1)
                             {
                                 state = 1;
+                                break;
                             }
                         }
                         break;
@@ -63,21 +67,19 @@ public class IACucaManager : MonoBehaviour
                     {
 
                         sinVal = cuca.GetIA().sinValue;
+                        stopVect = new Vector2(cuca.transform.forward.x, cuca.transform.forward.z);
 
-
-                        cuca.ChangeDirectionIA(new Vector2(Mathf.Sin(sinVal)/5, Mathf.Sin(sinVal))/5);
+                        cuca.ChangeDirectionIA(new Vector2(stopVect.x + Mathf.Sin(sinVal), stopVect.y + Mathf.Sin(sinVal)));
 
                         if (cuca.isInsideLight)
                         {
                             state = 4;
+                            break;
                         }
                         else if (cuca.isInsideFood)
                         {
                             state = 2;
-                        }
-                        else
-                        {
-                           state = 0;                          
+                            break;
                         }
 
                         if (sinVal + (2*Mathf.PI)/10 > 2*Mathf.PI)
@@ -89,7 +91,9 @@ public class IACucaManager : MonoBehaviour
                             cuca.GetIA().sinValue += 0.01f;
                         }
 
+                        state = 0;
                         break;
+                        
                     }
                 //===---
 
@@ -98,7 +102,12 @@ public class IACucaManager : MonoBehaviour
                     {
 
                         foodInfo = cuca.GetFood(); //Get food info
-                        vectDir = cuca.transform.position - foodInfo.transform.position; // Create vector for direction
+                        if (!foodInfo)
+                        {
+                            state = 0;
+                            break;
+                        }
+                        vectDir = -(cuca.transform.position - foodInfo.transform.position); // Create vector for direction
                         vectDir.Normalize();
 
                         cuca.ChangeDirectionIA(new Vector2(vectDir.x, vectDir.z)); // change dir
@@ -106,10 +115,12 @@ public class IACucaManager : MonoBehaviour
                         if (cuca.isInsideLight)
                         {
                             state = 4;
+                            break;
                         }
                         else if (!cuca.isInsideFood)
                         {
                             state = 0;
+                            break;
                         }
                         else
                         {
@@ -117,9 +128,9 @@ public class IACucaManager : MonoBehaviour
                             if (randInt == 1 || randInt == 2)
                             {
                                 state = 3;
+                                break;
                             }
-                        } 
-
+                        }
                         break;
                     }
 
@@ -129,7 +140,12 @@ public class IACucaManager : MonoBehaviour
                         Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f)); 
 
                         foodInfo = cuca.GetFood();
-                        vectDir = cuca.transform.position - foodInfo.transform.position;
+                        if (!foodInfo)
+                        {
+                            state = 0;
+                            break;
+                        }
+                        vectDir = -(cuca.transform.position - foodInfo.transform.position);
                         vectDir.Normalize();
                                                 
                         cuca.ChangeDirectionIA(new Vector2(vectDir.x + vectVariation.x, vectDir.z + vectVariation.y));
@@ -137,14 +153,17 @@ public class IACucaManager : MonoBehaviour
                         if (cuca.isInsideLight)
                         {
                             state = 4;
+                            break;
                         }
                         else if (!cuca.isInsideFood)
                         {
                             state = 0;
+                            break;
                         }
                         else
                         {                        
                             state = 2;
+                            break;
                         }
 
                         break;
@@ -158,7 +177,13 @@ public class IACucaManager : MonoBehaviour
                 case 4:  // Flee the light
                     {
                         lightInfo = cuca.GetLamp();
-                        vectDir = -(cuca.transform.position - lightInfo.transform.position);
+                        if (!lightInfo)
+                        {
+                            state = 0;
+                            break;
+                        }
+
+                        vectDir = (cuca.transform.position - lightInfo.transform.position);
                         vectDir.Normalize();
 
                         cuca.ChangeDirectionIA(new Vector2(vectDir.x, vectDir.z));
@@ -167,10 +192,12 @@ public class IACucaManager : MonoBehaviour
                         if (!cuca.isInsideLight && cuca.isInsideFood)
                         {
                             state = 2;
+                            break;
                         }
                         else if(!cuca.isInsideLight && !cuca.isInsideFood)
                         {
                             state = 6;
+                            break;
                         }
                         else
                         {
@@ -178,6 +205,7 @@ public class IACucaManager : MonoBehaviour
                             if (randInt == 1 || randInt == 2)
                             {
                                 state = 5;
+                                break;
                             }
                         }
                         break;
@@ -188,7 +216,12 @@ public class IACucaManager : MonoBehaviour
                         Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
 
                         lightInfo = cuca.GetLamp();
-                        vectDir = -(cuca.transform.position - lightInfo.transform.position);
+                        if (!lightInfo)
+                        {
+                            state = 0;
+                            break;
+                        }
+                        vectDir = (cuca.transform.position - lightInfo.transform.position);
                         vectDir.Normalize();
 
                         cuca.ChangeDirectionIA(new Vector2(vectDir.x + vectVariation.x, vectDir.z + vectVariation.y));
@@ -196,14 +229,17 @@ public class IACucaManager : MonoBehaviour
                         if (!cuca.isInsideLight && cuca.isInsideFood)
                         {
                             state = 2;
+                            break;
                         }
                         else if (!cuca.isInsideLight && !cuca.isInsideFood)
                         {
                             state = 6;
+                            break;
                         }
                         else
                         {
                             state = 4;
+                            break;
                         }
 
                         break;
