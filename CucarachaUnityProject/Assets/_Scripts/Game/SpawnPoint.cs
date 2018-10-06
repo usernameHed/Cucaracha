@@ -28,14 +28,15 @@ public class SpawnPoint : MonoBehaviour
     /// <summary>
     /// called spawn
     /// </summary>
-    public List<CucarachaController> SpawnToList(int number)
+    public void SpawnCuca(int number)
     {
         List<CucarachaController> curaracha = new List<CucarachaController>();
         for (int i = 0; i < number; i++)
         {
-            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Cucaracha, GetPosSpawn(), Quaternion.identity, CucarachaManager.Instance.transform);
+            GameObject cuca = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Cucaracha, GetPosSpawn(), Quaternion.identity, CucarachaManager.Instance.transform);
+            //curaracha.Add(cuca.GetComponent<CucarachaController>());
         }
-        return (curaracha);
+        //return (curaracha);
     }
     
 }

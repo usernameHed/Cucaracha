@@ -14,10 +14,19 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     [SerializeField]
     private SpawnPoint spawner;
 
-    [SerializeField, ReadOnly]
-    private List<CucarachaController> cucarachas;
-    public List<CucarachaController> GetCurarachaList() { return (cucarachas); }
+    [SerializeField]
+    private List<CucarachaController> cucarachas = new List<CucarachaController>();
 
+    public void AddCucaracha(CucarachaController cuca)
+    {
+        if (!cucarachas.Contains(cuca))
+            cucarachas.Add(cuca);
+    }
+
+    public void RemoveCuca(CucarachaController cuca)
+    {
+        cucarachas.Remove(cuca);
+    }
     
 
     private void OnEnable()
@@ -28,7 +37,8 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     public void InitScene()
     {
         Debug.Log("INIT Cucaracha manager ! !!");
-        cucarachas = spawner.SpawnToList(numberCucarachaLevel);
+        cucarachas.Clear();
+        spawner.SpawnCuca(numberCucarachaLevel);
     }
 
     /// <summary>

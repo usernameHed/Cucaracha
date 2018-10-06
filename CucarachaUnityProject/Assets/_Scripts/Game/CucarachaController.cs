@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,17 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     private bool enabledScript = true;      //tell if this script should be active or not
     private bool firstMove = false;
 
+    private Vector3 dirCura = new Vector3(0, 0, 0);
+
+    /// <summary>
+    /// called by IA at each frame
+    /// </summary>
+    [Button]
+    public void ChangeDirectionIA(Vector2 dir)
+    {
+        dirCura = new Vector3(dir.x, dir.y, 0);
+    }
+
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.GameOver, GameOver);
@@ -31,7 +43,10 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
     public void OnObjectSpawn()
     {
-        CucarachaManager.Instance.GetCurarachaList().Add(this);
+        //private Vector3 dirCura = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
+        //Debug.Log("spawned !!");
+        CucarachaManager.Instance.AddCucaracha(this);
+        ChangeDirectionIA(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
     }
 
     private void Start()
@@ -54,6 +69,18 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         verti = Input.GetAxisRaw("Vertical");
 
         hasMoved = (horiz != 0 || verti != 0);
+        /*if (hasMoved)
+        {
+            dirCura = new Vector3(horiz, verti, 0);
+        }*/
+    }
+
+    private float GetOnlyForward()
+    {
+        float horizAbs = Mathf.Abs(dirCura.x);
+        float vertiAbs = Mathf.Abs(dirCura.y);
+
+        return (new Vector3(horizAbs, vertiAbs, 0).magnitude);
     }
 
     /// <summary>
@@ -61,12 +88,11 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     /// </summary>
     private void MovePlayer()
     {
-       if (hasMoved)
-       {
-            UnityMovement.MoveByForcePushing_WithPhysics(rb, rb.transform.forward, speedPlayer * verti * Time.deltaTime);
-            rb.transform.Rotate(new Vector3(0, horiz, 0) * (rotationSpeed * Time.deltaTime));
-            //rb.transform.rotation = ExtQuaternion.DirObject(rb.transform.rotation, horiz, verti, rotationSpeed, ExtQuaternion.TurnType.Y);
-       } 
+       //if (hasMoved)
+       //{
+            UnityMovement.MoveByForcePushing_WithPhysics(rb, rb.transform.forward, speedPlayer * GetOnlyForward() * Time.deltaTime);
+            rb.transform.rotation = ExtQuaternion.DirObject(rb.transform.rotation, dirCura, rotationSpeed, ExtQuaternion.TurnType.Y);
+       //} 
     }
 
     private void Turn()
@@ -117,9 +143,10 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         
     }
 
+    [Button]
     public void Kill()
     {
-        CucarachaManager.Instance.GetCurarachaList().Remove(this);
+        CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);
         gameObject.SetActive(false);
     }

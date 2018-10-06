@@ -12,6 +12,21 @@ public static class ExtQuaternion
         ALL,
     }
 
+    public static Quaternion DirObject(this Quaternion rotation, Vector3 dir, float turnRate, TurnType typeRotation = TurnType.Z)
+    {
+        float heading = Mathf.Atan2(-dir.x * turnRate * Time.deltaTime, dir.y * turnRate * Time.deltaTime);
+
+        Quaternion _targetRotation = Quaternion.identity;
+
+        float x = (typeRotation == TurnType.X) ? heading * 1 * Mathf.Rad2Deg : 0;
+        float y = (typeRotation == TurnType.Y) ? heading * -1 * Mathf.Rad2Deg : 0;
+        float z = (typeRotation == TurnType.Z) ? heading * -1 * Mathf.Rad2Deg : 0;
+
+        _targetRotation = Quaternion.Euler(x, y, z);
+        rotation = Quaternion.RotateTowards(rotation, _targetRotation, turnRate * Time.deltaTime);
+        return (rotation);
+    }
+
     /// <summary>
     /// rotate smoothly selon 2 axe
     /// </summary>
