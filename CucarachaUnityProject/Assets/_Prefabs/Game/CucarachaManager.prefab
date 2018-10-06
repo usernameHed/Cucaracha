@@ -53,9 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ddb8c0c6f5e8b4fa9bcb3ef6d4e54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberCucarachaLevel: 500
+  numberCucarachaLevel: 1000
   frequency:
-    updateFrequency: 0.5
+    updateFrequency: 0.05
     notTheFirstTime: 0
     waitOnlyOnce: 0
   spawner: {fileID: 0}
@@ -88,3 +88,5 @@ MonoBehaviour:
   foodUI:
   - {fileID: 0}
   - {fileID: 0}
+  prefabsFood: {fileID: 1647027819164116, guid: f89fdf98d37a6a84ca9c4b673041c34f,
+    type: 2}
