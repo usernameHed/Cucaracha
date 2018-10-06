@@ -10,10 +10,14 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [SerializeField]
     private float rotationSpeed = 5;          //rotation speed of player
 
-    //[SerializeField]
+    [ReadOnly]
     public bool isInsideFood = false;
-    //[SerializeField]
+    [ReadOnly]
     public bool isInsideLight = false;
+    [ReadOnly]
+    public Food refFood = null;
+    [ReadOnly]
+    public Lamp refLamp = null;
 
     [Space(10)]
 
