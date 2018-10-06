@@ -11,12 +11,15 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     [Space(10)]
 
-    [SerializeField, ReadOnly]
+    [SerializeField]
     private SpawnPoint spawner;
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private List<CucarachaController> cucarachas = new List<CucarachaController>();
     public List<CucarachaController> GetCurarachaList() { return (cucarachas); }
+
+    [SerializeField, ReadOnly]
+    private List<FoodAndLight> foodAndLight = new List<FoodAndLight>();
 
     public void AddCucaracha(CucarachaController cuca)
     {
