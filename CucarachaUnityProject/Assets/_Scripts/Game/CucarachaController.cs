@@ -68,6 +68,18 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
             refFood = null;
     }
 
+    /// <summary>
+    /// set if the cuca is inside food or not, and if yes: set the reference
+    /// </summary>
+    public void SetInsideLamp(bool inside, Lamp _lamp)
+    {
+        isInsideLight = inside;
+        if (inside)
+            refLamp = _lamp;
+        else
+            refLamp = null;
+    }
+
     public void OnObjectSpawn()
     {
         //private Vector3 dirCura = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);

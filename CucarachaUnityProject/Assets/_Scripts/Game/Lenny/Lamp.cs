@@ -21,7 +21,25 @@ public class Lamp : MonoBehaviour, IKillable
     {
         if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
+            CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            if (cuca == null)
+            {
+                cuca = other.transform.parent.GetComponent<CucarachaController>();
+            }
+            cuca.SetInsideLamp(true, this);
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
+        {
+            CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            if (cuca == null)
+            {
+                cuca = other.transform.parent.GetComponent<CucarachaController>();
+            }
+            cuca.SetInsideLamp(false, null);
         }
     }
 
