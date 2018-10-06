@@ -22,6 +22,10 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     public Food GetFood() { return (refFood); }
     public Lamp GetLamp() { return (refLamp); }
 
+    [SerializeField]
+    private FrequencyCoolDown eatFrequency = new FrequencyCoolDown();
+
+
     [Space(10)]
 
     
@@ -134,9 +138,17 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
        //} 
     }
 
-    private void Turn()
+    /// <summary>
+    /// eat !
+    /// </summary>
+    public bool Eat()
     {
-
+        if (eatFrequency.IsReady())
+        {
+            eatFrequency.StartCoolDown();
+            return (true);
+        }
+        return (false);
     }
 
     /// <summary>

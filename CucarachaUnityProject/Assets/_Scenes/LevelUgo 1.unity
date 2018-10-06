@@ -254,7 +254,7 @@ Prefab:
     - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
         type: 2}
       propertyPath: numberCucarachaLevel
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c81b1887c57634ea9dbeb9a4f551df, type: 2}
@@ -616,6 +616,10 @@ Prefab:
     - target: {fileID: 4730772100049610, guid: f89fdf98d37a6a84ca9c4b673041c34f, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680630111234472, guid: f89fdf98d37a6a84ca9c4b673041c34f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1647027819164116, guid: f89fdf98d37a6a84ca9c4b673041c34f, type: 2}
       propertyPath: m_IsActive

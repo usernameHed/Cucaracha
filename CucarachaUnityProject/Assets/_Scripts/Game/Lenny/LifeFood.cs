@@ -2,46 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeFood : MonoBehaviour, IKillable {
-  int lifeFood = 100;
-  float timerFood;
-	// Use this for initialization
-	void Start () {
-    timerFood = Time.fixedTime;
+public class LifeFood : MonoBehaviour, IKillable
+{
+    [SerializeField]
+    private float timeBetweenEat = 0.1f;
 
-  }
+    int lifeFood = 100;
 
-  // Update is called once per frame
-  void Update () {
-   // Debug.Log("Time delta time : " + Time.deltaTime);
+    [SerializeField]
+    private Food food;
 
-  }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()) && lifeFood > 0)
+        {
+            CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            if (!cuca)
+                cuca = other.gameObject.transform.parent.GetComponent<CucarachaController>();
 
-  private void OnTriggerStay(Collider collision)
-  {
+            //GameData
+            if (cuca.Eat())
+            {
+                lifeFood--;
+                Debug.Log("life food : " + lifeFood);
+            }
 
-    if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
+            if (lifeFood <= 0)
+            {
+                lifeFood = 0;
+                Kill();
+            }
+        }
 
-      //GameData
-      if ( Time.fixedTime > timerFood + 0.5f ) {
-        lifeFood--;
-        timerFood = Time.fixedTime + 0.5f;
-        Debug.Log("life food : " + lifeFood);
-
-      }
-
-
-      if (lifeFood <= 0) {
-        lifeFood = 0;
-        Kill();
-
-      }
     }
 
-  }
-
-  public void Kill()
-  {
-    throw new System.NotImplementedException();
-  }
+    public void Kill()
+    {
+        food.Kill();
+    }
 }
