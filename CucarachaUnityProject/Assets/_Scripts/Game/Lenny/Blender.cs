@@ -22,10 +22,11 @@ public class Blender : MonoBehaviour
   private void OnTriggerEnter(Collider collision)
   {
     if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
+
+      juiceQuantity++;
       changeSlider();
 
-        juiceQuantity++;
-        Debug.Log("Juice quantity : " + juiceQuantity);
+      Debug.Log("Juice quantity : " + juiceQuantity);
 
       
 
