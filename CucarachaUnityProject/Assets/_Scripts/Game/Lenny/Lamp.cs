@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lamp : MonoBehaviour, IKillable{
-  [SerializeField]
-  private bool lightActive = true;
+public class Lamp : MonoBehaviour, IKillable
+{
+    [SerializeField]
+    private bool lightActive = true;
 
-  
-  private void OnTriggerStay(Collider other)
-  {
-    if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()) ) {
-      Debug.Log("Cucaracha flees the light");
+    // Use this for initialization
+    private void OnEnable()
+    {
+        CucarachaManager.Instance.AddLamp(this);
     }
-    
-  }
 
-  public void Kill()
-  {
-    throw new System.NotImplementedException();
-  }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
+        {
+
+        }
+    }
+
+    public void Kill()
+    {
+        CucarachaManager.Instance.RemoveLamp(this);
+    }
 }

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4217380627348334}
   - component: {fileID: 114212867289460366}
+  - component: {fileID: 114260041049717014}
   m_Layer: 0
   m_Name: CucarachaManager
   m_TagString: Untagged
@@ -54,3 +55,17 @@ MonoBehaviour:
   numberCucarachaLevel: 500
   spawner: {fileID: 0}
   cucarachas: []
+  iaManager: {fileID: 114260041049717014}
+  food: []
+  lamp: []
+--- !u!114 &114260041049717014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213090012335016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42052834bdfe194385111367e487ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

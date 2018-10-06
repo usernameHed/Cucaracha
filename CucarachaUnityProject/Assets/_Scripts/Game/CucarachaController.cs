@@ -56,6 +56,18 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         //EventManager.StartListening(GameData.Event.GameWin, GameOver);
     }
 
+    /// <summary>
+    /// set if the cuca is inside food or not, and if yes: set the reference
+    /// </summary>
+    public void SetInsideFood(bool inside, Food _food)
+    {
+        isInsideFood = inside;
+        if (inside)
+            refFood = _food;
+        else
+            refFood = null;
+    }
+
     public void OnObjectSpawn()
     {
         //private Vector3 dirCura = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);

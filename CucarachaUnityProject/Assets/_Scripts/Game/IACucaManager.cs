@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IACucaManager : MonoBehaviour {
-
-    [SerializeField]
-    private CucarachaManager CucaManager;
-    public CucarachaManager GetCucaManager() { return (CucaManager); }
-
-    
-    void Machine()
+public class IACucaManager : MonoBehaviour
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Machine()
     {
-        List<CucarachaController> cucarachas = CucaManager.GetCurarachaList();
+        List<CucarachaController> cucarachas = CucarachaManager.Instance.GetCurarachaList();
 
         int state;
         Food foodInfo;
@@ -21,7 +19,7 @@ public class IACucaManager : MonoBehaviour {
         for (int i = 0; i < cucarachas.Count; i++)
         {
             CucarachaController cuca = cucarachas[i];
-            state = cuca.GetIA().state;
+            state = cuca.GetIA().State;
 
             int randInt = 0;
             
@@ -202,6 +200,8 @@ public class IACucaManager : MonoBehaviour {
                 //====----
                   
             }
+
+            cuca.GetIA().State = state;
         }
     }
 
