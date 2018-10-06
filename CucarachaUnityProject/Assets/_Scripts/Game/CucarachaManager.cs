@@ -11,11 +11,12 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     [Space(10)]
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private SpawnPoint spawner;
 
     [SerializeField]
     private List<CucarachaController> cucarachas = new List<CucarachaController>();
+    public List<CucarachaController> GetCurarachaList() { return (cucarachas); }
 
     public void AddCucaracha(CucarachaController cuca)
     {
@@ -39,6 +40,17 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         Debug.Log("INIT Cucaracha manager ! !!");
         cucarachas.Clear();
         spawner.SpawnCuca(numberCucarachaLevel);
+    }
+
+    [Button]
+    public void ChangeDirectionCuca()
+    {
+        for (int i = 0; i < cucarachas.Count; i++)
+        {
+            CucarachaController cuca = cucarachas[i];
+            Vector2 dir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+            cuca.ChangeDirectionIA(dir);
+        }
     }
 
     /// <summary>
