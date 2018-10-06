@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634cf400bacb7cf43ad0d3583b6bbc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cuca: {fileID: 0}
   state: 0
+  sinVal: 0
 --- !u!114 &114682987962207740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,6 +191,8 @@ MonoBehaviour:
   isInsideLight: 0
   refFood: {fileID: 0}
   refLamp: {fileID: 0}
+  eatFrequency:
+    timeCoolDown: 0.3
   rb: {fileID: 54980964494248530}
   animator: {fileID: 0}
   ia: {fileID: 114670981561949754}

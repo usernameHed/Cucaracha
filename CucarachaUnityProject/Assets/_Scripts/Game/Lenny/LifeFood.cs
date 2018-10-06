@@ -8,26 +8,22 @@ public class LifeFood : MonoBehaviour, IKillable
     private float timeBetweenEat = 0.1f;
 
     int lifeFood = 100;
-    float timerFood;
 
     [SerializeField]
     private Food food;
 
-    // Use this for initialization
-    void Start ()
+    private void OnTriggerStay(Collider other)
     {
-        timerFood = Time.fixedTime;
-    }
-
-    private void OnTriggerStay(Collider collision)
-    {
-        if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
+        if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()) && lifeFood > 0)
         {
+            CucarachaController cuca = other.gameObject.GetComponent<CucarachaController>();
+            if (!cuca)
+                cuca = other.gameObject.transform.parent.GetComponent<CucarachaController>();
+
             //GameData
-            if ( Time.fixedTime > timerFood + timeBetweenEat)
+            if (cuca.Eat())
             {
                 lifeFood--;
-                timerFood = Time.fixedTime + timeBetweenEat;
                 Debug.Log("life food : " + lifeFood);
             }
 
