@@ -41,11 +41,11 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     public void AddFood(Food item)
     {
         if (!food.Contains(item))
-        food.Add(item);
+          food.Add(item);
     }
     public void RemoveFoodOrLight(Food item)
     {
-    food.Remove(item);
+        food.Remove(item);
     }
 
     public void InitScene()
