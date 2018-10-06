@@ -187,6 +187,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedPlayer: 1200
   rotationSpeed: 500
+  radiusWhenEating: 0.25
+  valueToGrow: 0.005
+  isEating: 0
   isInsideFood: 0
   isInsideLight: 0
   refFood: {fileID: 0}

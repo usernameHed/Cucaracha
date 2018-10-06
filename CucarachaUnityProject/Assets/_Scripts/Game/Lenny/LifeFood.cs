@@ -24,7 +24,7 @@ public class LifeFood : MonoBehaviour, IKillable
             if (cuca.Eat())
             {
                 lifeFood--;
-                Debug.Log("life food : " + lifeFood);
+                //Debug.Log("life food : " + lifeFood);
             }
 
             if (lifeFood <= 0)

@@ -9,6 +9,13 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     private float speedPlayer = 5;          //speed of player
     [SerializeField]
     private float rotationSpeed = 5;          //rotation speed of player
+    [SerializeField, FoldoutGroup("Eat")]
+    private float radiusWhenEating = 0.1f;
+    [SerializeField, FoldoutGroup("Eat")]
+    private float valueToGrow = 0.05f;
+
+    [SerializeField, ReadOnly]
+    private bool isEating = false;
 
     [ReadOnly]
     public bool isInsideFood = false;
@@ -25,6 +32,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [SerializeField]
     private FrequencyCoolDown eatFrequency = new FrequencyCoolDown();
 
+    private SphereCollider sphereCollider;
 
     [Space(10)]
 
@@ -45,6 +53,9 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
     private Vector3 dirCura = new Vector3(0, 0, 0);
 
+    private float radiusSphere = 0.3f;
+    private bool isGrowing = false;
+
     /// <summary>
     /// called by IA at each frame
     /// </summary>
@@ -57,6 +68,9 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     private void OnEnable()
     {
         EventManager.StartListening(GameData.Event.GameOver, GameOver);
+        sphereCollider = rb.GetComponent<SphereCollider>();
+
+        radiusSphere = sphereCollider.radius;
         //EventManager.StartListening(GameData.Event.GameWin, GameOver);
     }
 
@@ -66,11 +80,42 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     public void SetInsideFood(bool inside, Food _food)
     {
         isInsideFood = inside;
+        IsEating(inside);
         if (inside)
             refFood = _food;
         else
             refFood = null;
     }
+
+    private void IsEating(bool eating)
+    {
+        if (eating)
+        {
+            isEating = true;
+            isGrowing = false;
+            //sphereCollider.radius = radiusWhenEating;
+        }
+        else if (!isGrowing)
+        {
+            isGrowing = true;
+            isEating = false;
+            //rb.GetComponent<SphereCollider>().radius = radiusSphere;
+        }
+            
+    }
+    /*
+    private void AddRadiusIfTinyAndNotEating()
+    {
+        if (sphereCollider.radius < radiusSphere && !isEating)
+        {
+            sphereCollider.radius += valueToGrow;
+        }
+        if (sphereCollider.radius > radiusSphere)
+        {
+            sphereCollider.radius = radiusSphere;
+        }
+    }
+    */
 
     /// <summary>
     /// set if the cuca is inside food or not, and if yes: set the reference
@@ -169,6 +214,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
             return;
 
         InputPlayer();
+        //AddRadiusIfTinyAndNotEating();
     }
 
     /// <summary>
