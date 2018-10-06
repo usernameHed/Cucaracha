@@ -14,10 +14,13 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     public bool isInsideFood = false;
     [ReadOnly]
     public bool isInsideLight = false;
-    [ReadOnly]
-    public Food refFood = null;
-    [ReadOnly]
-    public Lamp refLamp = null;
+    [SerializeField, ReadOnly]
+    private Food refFood = null;
+    [SerializeField, ReadOnly]
+    private Lamp refLamp = null;
+
+    public Food GetFood() { return (refFood); }
+    public Lamp GetLamp() { return (refLamp); }
 
     [Space(10)]
 
