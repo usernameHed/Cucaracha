@@ -73,6 +73,33 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     private float radiusSphere = 0.3f;
     private bool isGrowing = false;
 
+
+    private Vector3 bloodVect = new Vector3(0, 0, 0);
+
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
+        sphereCollider = rb.GetComponent<SphereCollider>();
+
+        
+    }
+
+    public void OnObjectSpawn()
+    {
+        radiusSphere = sphereCollider.radius;
+        rb.transform.localPosition = Vector3.zero;
+        isDying = false;
+        animator.SetTrigger("Idle");
+        enabledScript = true;
+        //EventManager.StartListening(GameData.Event.GameWin, GameOver);
+        //EventManager.StartListening(GameData.Event.GameOver, GameOver);
+        //private Vector3 dirCura = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
+        //Debug.Log("spawned !!");
+        animator.SetTrigger("Idle");
+        CucarachaManager.Instance.AddCucaracha(this);
+        ChangeDirectionIA(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+    }
+
     /// <summary>
     /// called by IA at each frame
     /// </summary>
@@ -103,17 +130,6 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         //dirCura = Quaternion.Euler(dir) * dirCura;
         //print(dirCura);
         //dirCura = new Vector3(-dirCura.x, -dirCura.y, 0);
-    }
-
-    private void OnEnable()
-    {
-        EventManager.StartListening(GameData.Event.GameOver, GameOver);
-        sphereCollider = rb.GetComponent<SphereCollider>();
-
-        radiusSphere = sphereCollider.radius;
-        isDying = false;
-        animator.SetTrigger("Idle");
-        //EventManager.StartListening(GameData.Event.GameWin, GameOver);
     }
 
     /// <summary>
@@ -169,15 +185,6 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
             refLamp = _lamp;
         else
             refLamp = null;
-    }
-
-    public void OnObjectSpawn()
-    {
-        //private Vector3 dirCura = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
-        //Debug.Log("spawned !!");
-        animator.SetTrigger("Idle");
-        CucarachaManager.Instance.AddCucaracha(this);
-        ChangeDirectionIA(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
     }
 
     private void Start()
@@ -243,7 +250,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     /// </summary>
     private void GameOver()
     {
-        Debug.Log("game over !!");
+        //Debug.Log("game over !!");
         enabledScript = false;
     }
 
@@ -277,7 +284,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
     public void OnDesactivePool()
     {
-        
+        InactiveAll();
     }
 
     public void Kill()
@@ -293,6 +300,11 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
         isDying = true;
 
+        bloodVect = rb.transform.position + new Vector3(0.0f,0.0f,-0.1f);
+        
+        
+        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.BloodSplash, bloodVect, rb.transform.rotation * Quaternion.Euler(90,0,0), ObjectsPooler.Instance.transform);
+
         animator.SetTrigger("Death");
         StartCoroutine(RealyKill(addCadavre));
     }
@@ -304,8 +316,18 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         if (addCadavre)
             ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
 
+        //
+
+        InactiveAll();
+    }
+
+    private void InactiveAll()
+    {
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);
+
+        CucarachaManager.Instance.TestEndLevel();
+
         gameObject.SetActive(false);
 
         GameObject ds = Instantiate(deathSound);

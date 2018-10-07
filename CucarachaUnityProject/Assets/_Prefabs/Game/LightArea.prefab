@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightOn: 0
-  weight: 1
+  weight: 1.5
   lightObject: {fileID: 1275079466943116}
   m_sourceOn: {fileID: 82164776338696578}
   m_sourceOff: {fileID: 82852026144624198}

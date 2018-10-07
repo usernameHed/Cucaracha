@@ -1,31 +1,40 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Blender : MonoBehaviour
 {
-  int juiceQuantity = 0;
-  private GameObject Slider;
-  private float maximumScore;
-  public Animator animator;
-  private Slider sliderScript;
+    
+    //private GameObject Slider;
 
   AudioSource source;
+
+    public Animator animator;
+    //private Slider sliderScript;
+
+    private bool isWinned = false;
+    private bool isLoosed = false;
 
     // Use this for initialization
     void Start()
     {
         source = GetComponent<AudioSource>();
-        Slider = CucarachaManager.Instance.Slider;
+        //Slider = CucarachaManager.Instance.Slider;
 
-        sliderScript = Slider.GetComponent<Slider>();
+        //sliderScript = Slider.GetComponent<Slider>();
         ChangeSlider();
-        maximumScore = sliderScript.maxValue;
+        
+        isWinned = false;
+        isLoosed = false;
     }
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (isWinned || isLoosed)
+            return;
+
         if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
 
@@ -36,21 +45,15 @@ public class Blender : MonoBehaviour
             if (cuca.IsDying)
                 return;
             animator.SetTrigger("RoachCollision");
+            CameraShake.Shake(0.1f, 0.05f);
 
-
-            juiceQuantity++;
+            CucarachaManager.Instance.AddJuice();
             ChangeSlider();
             source.volume = .6f;
 
-            Debug.Log("Juice quantity : " + juiceQuantity);
+            Debug.Log("Juice quantity : " + CucarachaManager.Instance.GetJuice());
 
             cuca.Kill(false);
-
-            if (juiceQuantity > maximumScore)
-            {
-                Debug.Log("It's over 9000 ! ");
-            }
-
         }
     }
 
@@ -62,6 +65,7 @@ public class Blender : MonoBehaviour
 
     void ChangeSlider()
     {
-        sliderScript.value = juiceQuantity;
+        CucarachaManager.Instance.SetJuice();
+        //sliderScript.value = CucarachaManager.Instance.GetJuice(); //juiceQuantity;
     }
 }
