@@ -28,9 +28,9 @@ public class JuiceGauge : MonoBehaviour
 
     public void SetValue(float value)
     {
-        if (value > 1)
-            value = 1;
         float normalizedHeight = (value / maxInput) * maxOutput;
+        if (normalizedHeight > 1)
+            normalizedHeight = 1;
         //Debug.Log (parentHeight + " ; " + normalizedHeight);
         liquid.rectTransform.localPosition = new Vector3(liquid.rectTransform.localPosition.x, normalizedHeight * parentHeight);
     }

@@ -143,6 +143,7 @@ public class SceneManagerLocal : MonoBehaviour
             return;
 
         enabledScript = false;
+        ObjectsPooler.Instance.DesactiveEveryOneForTransition();
 
         SceneManagerGlobal.Instance.ActivateScene(
             sceneToLoad[0].scene,
