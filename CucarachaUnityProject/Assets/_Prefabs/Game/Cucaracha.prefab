@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 23111483121346950}
   - component: {fileID: 135493345216617556}
   - component: {fileID: 54980964494248530}
+  - component: {fileID: 114189765356525886}
   m_Layer: 9
   m_Name: Sphere
   m_TagString: Cucaracha
@@ -161,6 +162,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &114189765356525886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690314845282984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93523e7b033a434a9ceb0998089d492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CucaController: {fileID: 114682987962207740}
 --- !u!114 &114670981561949754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +207,7 @@ MonoBehaviour:
   isInsideLight: 0
   refFood: {fileID: 0}
   refLamp: {fileID: 0}
+  isDying: 0
   eatFrequency:
     timeCoolDown: 0.3
   rb: {fileID: 54980964494248530}

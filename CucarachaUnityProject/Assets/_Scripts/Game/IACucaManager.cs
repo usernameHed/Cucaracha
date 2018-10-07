@@ -30,7 +30,6 @@ public class IACucaManager : MonoBehaviour
         Vector2 stopVect;
         int count = 0;
         int state;
-        float sinVal;
         float x, y;
 
         
@@ -57,10 +56,6 @@ public class IACucaManager : MonoBehaviour
                         stopVect = new Vector2(cuca.rb.transform.forward.x, cuca.rb.transform.forward.z);
                         cuca.ChangeDirectionIA(new Vector2(stopVect.x*0.0001f, stopVect.y * 0.0001f));
 
-                        //Debug.Log(stopVect.x + " " + stopVect.y);
-                        //Debug.DrawRay(cuca.rb.transform.position, stopVect, Color.red, 1f);
-                        
-
                         if (cuca.isInsideLight)
                         {
                             state = 4;
@@ -85,9 +80,7 @@ public class IACucaManager : MonoBehaviour
                     }
 
                 case 1:         //Crawl
-                    {
-
-                        sinVal = cuca.GetIA().sinValue;
+                    {                        
                         stopVect = new Vector2(cuca.rb.transform.forward.x, cuca.rb.transform.forward.z);
                         x = generateNormalRandom(0.0f, 0.5f);
                         y = generateNormalRandom(0.0f, 0.5f);
@@ -113,15 +106,6 @@ public class IACucaManager : MonoBehaviour
                             state = 2;
                             break;
                         }
-
-                        //if (sinVal + (2.0f*Mathf.PI)/10.0f > 2.0f*Mathf.PI)
-                        //{
-                        //    cuca.GetIA().sinValue += 2.0f;
-                        //}
-                        //else
-                        //{
-                        //    cuca.GetIA().sinValue += 2.0f;
-                        //}
 
                         state = 0;
                         break;
@@ -170,9 +154,7 @@ public class IACucaManager : MonoBehaviour
 
                 case 3: // Forward food with variations in direction
                     {
-
-                        //Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
-                                                
+                        
                         foodInfo = cuca.GetFood();
                         if (!foodInfo)
                         {
@@ -249,8 +231,7 @@ public class IACucaManager : MonoBehaviour
 
                 case 5: // Flee the light but with variations
                     {
-                        //Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
-
+                        
                         lightInfo = cuca.GetLamp();
                         if (!lightInfo)
                         {

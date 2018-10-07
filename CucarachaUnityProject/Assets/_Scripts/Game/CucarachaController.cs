@@ -66,17 +66,16 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [Button]
     public void ChangeDirectionIA(Vector2 dir)
     {
-        // if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
-        if (sphereCollider.gameObject.CompareTag(GameData.Layers.Wall.ToString()))
-        {
-            dirCura = new Vector3(-dir.x*0.01f, -dir.y*0.01f, 0);
-            dirCura = Quaternion.Euler(0, -180, 0) * dirCura;
-        }
-        else
-        {
-            dirCura = new Vector3(dir.x, dir.y, 0);
-        }
+       
+        dirCura = new Vector3(dir.x, dir.y, 0);       
         
+    }
+
+    public void InvertDirection()
+    {
+        dirCura = Quaternion.Euler(180, 180, 0) * dirCura;
+        //print(dirCura);
+        //dirCura = new Vector3(-dirCura.x, -dirCura.y, 0);
     }
 
     private void OnEnable()
