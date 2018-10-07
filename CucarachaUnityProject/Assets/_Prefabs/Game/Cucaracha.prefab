@@ -72,8 +72,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1462658937139620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.162, y: 0.1, z: -1.3}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -58.8, y: 0.1, z: -1.3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4690248279150106}
   m_Father: {fileID: 0}
@@ -222,8 +222,11 @@ MonoBehaviour:
   rotationSpeed: 500
   radiusWhenEating: 0.25
   valueToGrow: 0.005
+  magnitudeRun: 0.4
+  timeOfDeath: 0.5
   speedTurnOnWall: 1.5
   speedMoveOnWall: 5
+  animator: {fileID: 95275747784080928}
   isEating: 0
   isInsideFood: 0
   isInsideLight: 0
@@ -233,7 +236,6 @@ MonoBehaviour:
   eatFrequency:
     timeCoolDown: 0.3
   rb: {fileID: 54980964494248530}
-  animator: {fileID: 0}
   ia: {fileID: 114670981561949754}
 --- !u!135 &135493345216617556
 SphereCollider:

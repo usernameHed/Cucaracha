@@ -204,7 +204,7 @@ public class IACucaManager : MonoBehaviour
                         vectDir = (cuca.rb.transform.position - lightInfo.transform.position);
                         vectDir.Normalize();
 
-                        cuca.ChangeDirectionIA(new Vector2(vectDir.x, vectDir.z));
+                        cuca.ChangeDirectionIA(new Vector2(vectDir.x * lightInfo.weight, vectDir.z * lightInfo.weight));
 
                         
                         if (!cuca.isInsideLight && cuca.isInsideFood)
@@ -243,7 +243,7 @@ public class IACucaManager : MonoBehaviour
                         x = generateNormalRandom(0.0f, 0.5f);
                         y = generateNormalRandom(0.0f, 0.5f);
 
-                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + x), (vectDir.y + y)));
+                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + x) * lightInfo.weight, (vectDir.y + y) * lightInfo.weight));
 
                         if (!cuca.isInsideLight && cuca.isInsideFood)
                         {

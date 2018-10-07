@@ -447,6 +447,16 @@ Prefab:
       propertyPath: parentFoodUI
       value: 
       objectReference: {fileID: 879588765}
+    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: numberCucarachaLevel
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: foodNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c81b1887c57634ea9dbeb9a4f551df, type: 2}
   m_IsPrefabAsset: 0
@@ -1560,7 +1570,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1621,7 +1631,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.08
+      value: -4.42
       objectReference: {fileID: 0}
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1629,7 +1639,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: -2.32
       objectReference: {fileID: 0}
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3096,7 +3106,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.28
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3104,7 +3114,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.02
+      value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 4461166534146812, guid: 7f098c64030c30c4eb022e2908c4be85, type: 2}
       propertyPath: m_LocalRotation.x
