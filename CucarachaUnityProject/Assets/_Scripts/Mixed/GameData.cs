@@ -27,6 +27,8 @@ public static class GameData
     {
         Cucaracha,
         DeathCucaracha,
+        Food,
+        DeadCuca,
     }
 
     public enum Layers

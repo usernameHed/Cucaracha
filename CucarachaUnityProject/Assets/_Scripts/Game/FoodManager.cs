@@ -34,9 +34,18 @@ public class FoodManager : SingletonMono<FoodManager>
             pos.z = 0;// transform.position.z - Camera.main.transform.position.z;
             pos = GameManager.Instance.CameraMain.ScreenToWorldPoint(pos);
             pos.y = 0;
-            GameObject foodObject = Instantiate(prefabsFood, pos, Quaternion.identity, transform);
+            //GameObject foodObject = Instantiate(prefabsFood, pos, Quaternion.identity, transform);
+            GameObject foodObject = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Food, pos, Quaternion.identity, transform);
+
             Food food = foodObject.GetComponent<Food>();
+            StartCoroutine(MoveFood(foodObject));
         }
+    }
+
+    private IEnumerator MoveFood(GameObject food)
+    {
+        yield return new WaitForEndOfFrame();
+        food.transform.position = new Vector3(food.transform.position.x, food.transform.position.y + 0.001f, food.transform.position.z);
     }
 
     // Update is called once per frame

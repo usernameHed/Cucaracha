@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
