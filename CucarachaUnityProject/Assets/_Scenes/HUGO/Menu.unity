@@ -1531,7 +1531,7 @@ MonoBehaviour:
   cameraObject: {fileID: 0}
   sceneToLoad:
   - active: 1
-    scene: Level2
+    scene: LEVEL_HUGO_1
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
@@ -1540,7 +1540,16 @@ MonoBehaviour:
     swapWhenLoaded: 0
     sceneToChargeAfterAdditive: 
   - active: 1
-    scene: Level1
+    scene: Menu
+    loadAtStart: 0
+    loadAfterXSecond: 0
+    fade: 1
+    fadeTime: 1.5
+    additive: 0
+    swapWhenLoaded: 0
+    sceneToChargeAfterAdditive: 
+  - active: 1
+    scene: Menu
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
@@ -1669,42 +1678,42 @@ Prefab:
     - target: {fileID: 224448939969885698, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -19.95941
+      value: -19.930498
       objectReference: {fileID: 0}
     - target: {fileID: 224448939969885698, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 39.91882
+      value: 39.860996
       objectReference: {fileID: 0}
     - target: {fileID: 224452925451789692, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -103.663635
+      value: -103.57141
       objectReference: {fileID: 0}
     - target: {fileID: 224452925451789692, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 47.489628
+      value: 47.42084
       objectReference: {fileID: 0}
     - target: {fileID: 224738644586749780, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -188.40024
+      value: -188.24321
       objectReference: {fileID: 0}
     - target: {fileID: 224738644586749780, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 41.983585
+      value: 41.92277
       objectReference: {fileID: 0}
     - target: {fileID: 224088982483213704, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -273.8251
+      value: -273.6023
       objectReference: {fileID: 0}
     - target: {fileID: 224088982483213704, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 48.86614
+      value: 48.795357
       objectReference: {fileID: 0}
     - target: {fileID: 1772781069977112, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4, type: 2}
       propertyPath: m_IsActive

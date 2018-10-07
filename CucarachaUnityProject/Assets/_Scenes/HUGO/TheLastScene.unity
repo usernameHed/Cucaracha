@@ -497,7 +497,7 @@ MonoBehaviour:
   cameraObject: {fileID: 168356576}
   sceneToLoad:
   - active: 1
-    scene: TheLastScene
+    scene: Menu
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
@@ -507,6 +507,15 @@ MonoBehaviour:
     sceneToChargeAfterAdditive: 
   - active: 1
     scene: Menu
+    loadAtStart: 0
+    loadAfterXSecond: 0
+    fade: 1
+    fadeTime: 1.5
+    additive: 0
+    swapWhenLoaded: 0
+    sceneToChargeAfterAdditive: 
+  - active: 1
+    scene: TheLastScene
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
