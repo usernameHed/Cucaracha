@@ -7,6 +7,8 @@ public class Lamp : MonoBehaviour, IKillable
     [SerializeField]
     private bool lightOn = false;
 
+    public float weight = 1f;
+
     [SerializeField]
     private GameObject lightObject;
 
