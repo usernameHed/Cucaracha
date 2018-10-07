@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class Blender : MonoBehaviour
 {
     
-    private GameObject Slider;
+    //private GameObject Slider;
 
     public Animator animator;
-    private Slider sliderScript;
+    //private Slider sliderScript;
 
     private bool isWinned = false;
     private bool isLoosed = false;
@@ -18,9 +18,9 @@ public class Blender : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Slider = CucarachaManager.Instance.Slider;
+        //Slider = CucarachaManager.Instance.Slider;
 
-        sliderScript = Slider.GetComponent<Slider>();
+        //sliderScript = Slider.GetComponent<Slider>();
         ChangeSlider();
         
         isWinned = false;
@@ -56,6 +56,7 @@ public class Blender : MonoBehaviour
 
     private void ChangeSlider()
     {
-        sliderScript.value = CucarachaManager.Instance.GetJuice(); //juiceQuantity;
+        CucarachaManager.Instance.SetJuice();
+        //sliderScript.value = CucarachaManager.Instance.GetJuice(); //juiceQuantity;
     }
 }

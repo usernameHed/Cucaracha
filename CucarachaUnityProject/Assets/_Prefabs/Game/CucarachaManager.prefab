@@ -53,8 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ddb8c0c6f5e8b4fa9bcb3ef6d4e54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberCucarachaLevel: 1000
-  Slider: {fileID: 0}
+  numberCucarachaLevel: 15
+  percentToWin: 100
+  maximumScore: 0
+  juice: {fileID: 0}
   frequency:
     updateFrequency: 0.05
     notTheFirstTime: 0
@@ -94,6 +96,7 @@ MonoBehaviour:
   - {fileID: 0}
   prefabsFood: {fileID: 1647027819164116, guid: f89fdf98d37a6a84ca9c4b673041c34f,
     type: 2}
+  prefabsUI: {fileID: 1408892267726858, guid: 30f3f8d36cb63e74ca1d758c7ed8143a, type: 2}
   parentFoodUI: {fileID: 0}
-  food: 5
+  foodNumber: 3
   foodList: []
