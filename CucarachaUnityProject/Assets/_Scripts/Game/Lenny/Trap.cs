@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour {
+public class Trap : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-  private void OnTriggerEnter(Collider collision)
-  {
-    if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
-      Debug.Log("Cucaracha is dead with Trap");
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
+        {
+            CucarachaController cuca = collision.gameObject.GetComponent<CucarachaController>();
+            if (!cuca)
+                cuca = collision.transform.parent.GetComponent<CucarachaController>();
+
+            Debug.Log("Cucaracha is dead with Trap");
+            cuca.Kill();
+        }
     }
-
-  }
 }
