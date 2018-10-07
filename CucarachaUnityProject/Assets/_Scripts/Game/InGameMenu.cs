@@ -13,21 +13,25 @@ public class InGameMenu : MonoBehaviour {
 	}
 
 	void Update () {
+		if (Panel == null)
+			return;
 		if (Input.GetButtonDown ("Cancel"))
 			Toggle ();
 	}
 
 	void Toggle () {
+		if (Panel == null)
+			return;
 		visible = !visible;
 		Panel.SetActive (visible);
 	}
-	
+
 	public void Menu () {
 		GameManager.Instance.SceneManagerLocal.PlayPrevious ();
 	}
 
 	public void Restart () {
-		GameManager.Instance.SceneManagerLocal.PlayNext ();
+		GameManager.Instance.SceneManagerLocal.PlayIndex (2);
 	}
 
 	public void Resume () {
