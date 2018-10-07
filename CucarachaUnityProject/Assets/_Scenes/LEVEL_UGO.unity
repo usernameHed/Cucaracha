@@ -381,16 +381,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
-        type: 2}
-      propertyPath: Slider
-      value: 
-      objectReference: {fileID: 1592077036}
-    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
-        type: 2}
-      propertyPath: spawner
-      value: 
-      objectReference: {fileID: 7621502}
     - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
         type: 2}
       propertyPath: foodUI.Array.data[0]
@@ -416,6 +406,32 @@ Prefab:
       propertyPath: foodUI.Array.data[4]
       value: 
       objectReference: {fileID: 2116449790}
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: parentFoodUI
+      value: 
+      objectReference: {fileID: 879588765}
+    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: Slider
+      value: 
+      objectReference: {fileID: 1592077036}
+    - target: {fileID: 114212867289460366, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 7621502}
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: prefabsUI
+      value: 
+      objectReference: {fileID: 1408892267726858, guid: 30f3f8d36cb63e74ca1d758c7ed8143a,
+        type: 2}
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: foodNumber
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c81b1887c57634ea9dbeb9a4f551df, type: 2}
   m_IsPrefabAsset: 0
@@ -2358,7 +2374,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 493812325}
   m_FillRect: {fileID: 672989867}
   m_HandleRect: {fileID: 493812324}

@@ -1,19 +1,36 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodManager : SingletonMono<FoodManager>
 {
-    [SerializeField]
-    private List<FoodUI> foodUI;
+    [SerializeField, ReadOnly]
+    private List<FoodUI> foodUI = new List<FoodUI>();
     [SerializeField]
     private GameObject prefabsFood;
+    [SerializeField]
+    private GameObject prefabsUI;
 
     [SerializeField]
+    private GameObject parentFoodUI;
+
+    [SerializeField]
+    private int foodNumber = 5;
+
+    [SerializeField, ReadOnly]
     private List<Food> foodList = new List<Food>();
 
     public void Init()
     {
+        foodUI.Clear();
+        parentFoodUI.transform.ClearChild();
+        for (int i = 0; i < foodNumber; i++)
+        {
+            GameObject ui = Instantiate(prefabsUI, parentFoodUI.transform);
+            foodUI.Add(ui.GetComponent<FoodUI>());
+        }
+
         InitUI();
     }
 

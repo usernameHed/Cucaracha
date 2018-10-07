@@ -94,4 +94,6 @@ MonoBehaviour:
   - {fileID: 0}
   prefabsFood: {fileID: 1647027819164116, guid: f89fdf98d37a6a84ca9c4b673041c34f,
     type: 2}
+  parentFoodUI: {fileID: 0}
+  food: 5
   foodList: []
