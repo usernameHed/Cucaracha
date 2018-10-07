@@ -1611,6 +1611,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 1814221123}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 21300000, guid: 28ec4afae9dbfcb46972df842f6c8afc, type: 3}
 --- !u!4 &1043661563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4549183779158496, guid: f3fc596a59b3b7448b3b1b2585db282e,
@@ -2701,6 +2702,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 1017961220}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 21300000, guid: 28ec4afae9dbfcb46972df842f6c8afc, type: 3}
 --- !u!1 &1714342892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3415,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 1951334655}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 21300000, guid: 28ec4afae9dbfcb46972df842f6c8afc, type: 3}
 --- !u!114 &1951334655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4028,6 +4031,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 2116449791}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 21300000, guid: 28ec4afae9dbfcb46972df842f6c8afc, type: 3}
 --- !u!114 &2116449791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4118,6 +4122,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 2133880921}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 21300000, guid: 28ec4afae9dbfcb46972df842f6c8afc, type: 3}
 --- !u!114 &2133880921
 MonoBehaviour:
   m_ObjectHideFlags: 0

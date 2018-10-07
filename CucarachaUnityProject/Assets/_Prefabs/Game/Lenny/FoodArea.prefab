@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76c5a2602821444095db55694068a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedFromLevel: 1
   life: {fileID: 114045286376970116}
   isDeadCuca: 0
   weight: 1

@@ -13,13 +13,16 @@ public class FoodUI : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
 
+    [SerializeField]
+    private Sprite spriteNull;
+
     public void Init()
     {
         FillFood(isFilled);
     }
 
     [Button]
-    private void FillFood(bool fill)
+    public void FillFood(bool fill)
     {
         if (fill)
         {
@@ -27,7 +30,7 @@ public class FoodUI : MonoBehaviour
         }
         else
         {
-            image.sprite = null;
+            image.sprite = spriteNull;
         }
     }
 }

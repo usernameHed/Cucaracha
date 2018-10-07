@@ -17,13 +17,24 @@ public class FoodManager : SingletonMono<FoodManager>
         InitUI();
     }
 
-    public void AddOne()
+    public void AddOne(Food food)
     {
+        if (!foodList.Contains(food))
+        {
+            foodList.Add(food);
+            InitUI();
+        }
 
     }
-    public void DeleteOne()
+    public void DeleteOne(Food food)
     {
+        foodList.Remove(food);
+        InitUI();
+    }
 
+    private bool CanAdd()
+    {
+        return ((foodList.Count != foodUI.Count));
     }
 
     /// <summary>
@@ -35,11 +46,20 @@ public class FoodManager : SingletonMono<FoodManager>
         {
             foodUI[i].Init();
         }
+        List<Food> tmpList = new List<Food>(foodList);
+        for (int i = foodUI.Count - 1; i >= 0; i--)
+        {
+            if (tmpList.Count > 0)
+            {
+                tmpList.RemoveAt(0);
+                foodUI[i].FillFood(false);
+            }
+        }
     }
 
     private void HandleFood()
     {
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && CanAdd())
         {
             Debug.Log("create food");
             Vector3 pos = Input.mousePosition;
@@ -48,8 +68,10 @@ public class FoodManager : SingletonMono<FoodManager>
             pos.y = 0;
             //GameObject foodObject = Instantiate(prefabsFood, pos, Quaternion.identity, transform);
             GameObject foodObject = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Food, pos, Quaternion.identity, transform);
-
+      
             Food food = foodObject.GetComponent<Food>();
+            food.addedFromLevel = false;
+
             StartCoroutine(MoveFood(foodObject));
         }
     }

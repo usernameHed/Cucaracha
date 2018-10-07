@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class Food : MonoBehaviour, IKillable, IPooledObject
 {
+    public bool addedFromLevel = false;
+
     [SerializeField]
     private LifeFood life;
+
+
 
     private List<CucarachaController> cucaInside = new List<CucarachaController>();
 
@@ -19,19 +23,30 @@ public class Food : MonoBehaviour, IKillable, IPooledObject
 
     public void OnObjectSpawn()
     {
+        Init();
+    }
+
+    private void Init()
+    {
         gameObject.SetActive(true);
         life.Init();
         Debug.Log("spawn: " + gameObject.name);
         isKilled = false;
+
+        if (!isDeadCuca)
+            FoodManager.Instance.AddOne(this);
 
         CucarachaManager.Instance.AddFood(this);
         cucaInside.Clear();
     }
 
     // Use this for initialization
-    private void OnEnable()
+    private void Start()
     {
-        
+        if (addedFromLevel)
+        {
+            Init();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -90,6 +105,9 @@ public class Food : MonoBehaviour, IKillable, IPooledObject
         isKilled = true;
         CucarachaManager.Instance.RemoveFood(this);
         ResetCuca();
+
+        if (!isDeadCuca)
+            FoodManager.Instance.DeleteOne(this);
 
         transform.SetParent(ObjectsPooler.Instance.transform);
         //Destroy(gameObject);
