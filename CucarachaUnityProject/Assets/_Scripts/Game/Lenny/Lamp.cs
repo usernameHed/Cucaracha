@@ -14,6 +14,8 @@ public class Lamp : MonoBehaviour, IKillable
 
     private List<CucarachaController> cucaInside = new List<CucarachaController>();
 
+    [SerializeField]
+    AudioSource m_sourceOn, m_sourceOff;
 
     // Use this for initialization
     private void OnEnable()
@@ -91,6 +93,7 @@ public class Lamp : MonoBehaviour, IKillable
             if (!lightOn)
             {
                 ActiveLight(true);
+                m_sourceOn.Play();
             }
         }
         else if (!Input.GetMouseButton(0))
@@ -98,6 +101,7 @@ public class Lamp : MonoBehaviour, IKillable
             if (lightOn)
             {
                 ActiveLight(false);
+                m_sourceOff.Play();
             }
         }
     }
