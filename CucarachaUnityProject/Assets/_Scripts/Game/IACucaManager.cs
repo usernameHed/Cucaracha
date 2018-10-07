@@ -42,7 +42,10 @@ public class IACucaManager : MonoBehaviour
 
             int randInt = 0;
 
-           // Debug.Log(state);
+            if (cuca.IsDying)
+            {
+                continue;
+            }
            
             switch (state)
             {
@@ -141,7 +144,7 @@ public class IACucaManager : MonoBehaviour
                         vectDir = -(cuca.rb.transform.position - foodInfo.transform.position); // Create vector for direction
                         vectDir.Normalize();
 
-                        cuca.ChangeDirectionIA(new Vector2(vectDir.x, vectDir.z)); // change dir
+                        cuca.ChangeDirectionIA(new Vector2(vectDir.x * foodInfo.weight, vectDir.z * foodInfo.weight)); // change dir
 
                         if (cuca.isInsideLight)
                         {
@@ -182,7 +185,7 @@ public class IACucaManager : MonoBehaviour
                         x = generateNormalRandom(0.0f, 0.3f);
                         y = generateNormalRandom(0.0f, 0.3f);
 
-                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + x) , (vectDir.y + y)));
+                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + x) * foodInfo.weight, (vectDir.y + y) * foodInfo.weight));
 
                         if (cuca.isInsideLight)
                         {
