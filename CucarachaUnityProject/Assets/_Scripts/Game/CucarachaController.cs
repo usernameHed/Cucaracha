@@ -280,7 +280,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
     public void OnDesactivePool()
     {
-        
+        InactiveAll();
     }
 
     public void Kill()
@@ -314,6 +314,11 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
         //
 
+        InactiveAll();
+    }
+
+    private void InactiveAll()
+    {
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);
 

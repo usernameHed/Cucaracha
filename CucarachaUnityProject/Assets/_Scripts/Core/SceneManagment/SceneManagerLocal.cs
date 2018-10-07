@@ -171,6 +171,7 @@ public class SceneManagerLocal : MonoBehaviour
         SceneManagerGlobal.Instance.JumpToScene(sceneToLoad[1].scene, sceneToLoad[1].fade, sceneToLoad[1].fadeTime);    //hard code du previous ?
     }
 
+    [Button]
     public void PlayIndex(int index)
     {
         if (!enabledScript)
