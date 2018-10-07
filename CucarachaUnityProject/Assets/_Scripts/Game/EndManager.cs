@@ -15,8 +15,10 @@ public class EndManager : MonoBehaviour {
 
 		GameOverPanel.alpha = 0;
 		NextLevelPanel.alpha = 0;
-		GameOverPanel.interactable = false;
-		NextLevelPanel.interactable = false;
+        GameOverPanel.blocksRaycasts = false;
+        NextLevelPanel.blocksRaycasts = false;
+        GameOverPanel.interactable = false;
+        NextLevelPanel.interactable = false;
 	}
 
 	private void GameOver () {
@@ -40,7 +42,8 @@ public class EndManager : MonoBehaviour {
 
 	private IEnumerator ShowCanvasGroup (CanvasGroup group, float delay = 1.0f) {
 		group.interactable = true;
-		float start = Time.unscaledTime;
+        group.blocksRaycasts = true;
+        float start = Time.unscaledTime;
 		do {
 			yield return null;
 			group.alpha = (Time.unscaledTime - start) / delay;
@@ -52,11 +55,11 @@ public class EndManager : MonoBehaviour {
 	}
 
 	public void Restart () {
-		GameManager.Instance.SceneManagerLocal.PlayNext ();
+		GameManager.Instance.SceneManagerLocal.PlayIndex(2);
 	}
 
 	public void NextLevel () {
-		GameManager.Instance.SceneManagerLocal.PlayIndex (2);
+		GameManager.Instance.SceneManagerLocal.PlayNext();
 	}
 
 	public void Quit () {

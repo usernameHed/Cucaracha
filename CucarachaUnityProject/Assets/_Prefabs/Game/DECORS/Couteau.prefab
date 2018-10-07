@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4235355958865880}
   - component: {fileID: 212107175962021864}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Couteau
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4579532358311354}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ombre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4004607290617002}
   - component: {fileID: 212745719425053098}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Couteau (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4213123811540868}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Couteau
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958492820696758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9327354, y: 0.33, z: -1.76}
+  m_LocalPosition: {x: -0.69, y: 0.05, z: 0.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4235355958865880}

@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4063225252422538}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4168127601999816}
   - component: {fileID: 212408876059767196}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cuillere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4883236404915016}
   - component: {fileID: 212774521444517894}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cuillere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1338109305685326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.138546, y: 2.2053652, z: -1.7890803}
+  m_LocalPosition: {x: -3, y: 0.025, z: 3.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4115950070615108}
