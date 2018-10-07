@@ -3,18 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Food : MonoBehaviour, IKillable
+public class Food : MonoBehaviour, IKillable, IPooledObject
 {
+    [SerializeField]
+    private LifeFood life;
+
     private List<CucarachaController> cucaInside = new List<CucarachaController>();
 
-    // Use this for initialization
-    private void OnEnable()
+
+    public bool isDeadCuca = true;
+
+    public float weight = 1.0f;
+
+    public bool isKilled = false;
+
+    public void OnObjectSpawn()
     {
+        gameObject.SetActive(true);
+        life.Init();
+        Debug.Log("spawn: " + gameObject.name);
+        isKilled = false;
+
         CucarachaManager.Instance.AddFood(this);
         cucaInside.Clear();
     }
 
-    private void OnTriggerEnter(Collider other)
+    // Use this for initialization
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
@@ -23,6 +43,9 @@ public class Food : MonoBehaviour, IKillable
             {
                 cuca = other.transform.parent.GetComponent<CucarachaController>();
             }
+
+            if (cuca.isInsideFood)
+                return;
 
             //if ()
             //Debug.Log("Cucaracha follow the food");
@@ -61,8 +84,21 @@ public class Food : MonoBehaviour, IKillable
     [Button]
     public void Kill()
     {
+        if (isKilled)
+            return;
+
+        isKilled = true;
         CucarachaManager.Instance.RemoveFood(this);
         ResetCuca();
-        Destroy(gameObject);
+
+        transform.SetParent(ObjectsPooler.Instance.transform);
+        //Destroy(gameObject);
+        Debug.Log("ici desactive !");
+        gameObject.SetActive(false);
+    }
+
+    public void OnDesactivePool()
+    {
+        
     }
 }

@@ -26,6 +26,10 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [SerializeField, ReadOnly]
     public Lamp refLamp = null;
 
+    [SerializeField]
+    private bool isDying = false;
+    public bool IsDying { get { return (isDying); } }
+
     public Food GetFood() { return (refFood); }
     public Lamp GetLamp() { return (refLamp); }
 
@@ -62,7 +66,17 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [Button]
     public void ChangeDirectionIA(Vector2 dir)
     {
-        dirCura = new Vector3(dir.x, dir.y, 0);
+        // if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
+        if (sphereCollider.gameObject.CompareTag(GameData.Layers.Wall.ToString()))
+        {
+            dirCura = new Vector3(-dir.x*0.01f, -dir.y*0.01f, 0);
+            dirCura = Quaternion.Euler(0, -180, 0) * dirCura;
+        }
+        else
+        {
+            dirCura = new Vector3(dir.x, dir.y, 0);
+        }
+        
     }
 
     private void OnEnable()
@@ -71,6 +85,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         sphereCollider = rb.GetComponent<SphereCollider>();
 
         radiusSphere = sphereCollider.radius;
+        isDying = false;
         //EventManager.StartListening(GameData.Event.GameWin, GameOver);
     }
 
@@ -222,7 +237,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     /// </summary>
     private void FixedUpdate()
     {
-        if (!enabledScript)
+        if (!enabledScript || isDying)
             return;
         MovePlayer();
     }
@@ -240,9 +255,22 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         
     }
 
-    [Button]
     public void Kill()
     {
+        Kill(true);
+    }
+
+    [Button]
+    public void Kill(bool addCadavre)
+    {
+        if (isDying)
+            return;
+
+        isDying = true;
+
+        if (addCadavre)
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
+
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);
         gameObject.SetActive(false);
