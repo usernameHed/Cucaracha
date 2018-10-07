@@ -13,6 +13,9 @@ public class EndManager : MonoBehaviour {
 	[SerializeField]
 	AudioMixerSnapshot m_audioOn, m_audioOff;
 
+	[SerializeField]
+	AudioSource m_loose;
+
 	private void OnEnable () {
 		EventManager.StartListening (GameData.Event.GameOver, GameOver);
 		EventManager.StartListening (GameData.Event.GameWin, GameWin);
@@ -29,6 +32,7 @@ public class EndManager : MonoBehaviour {
 		Debug.Log ("GAME OVER");
 		ShowLiquid (true);
 		StartCoroutine (ShowCanvasGroup (GameOverPanel));
+		m_loose.Play();
 	}
 
 	private void GameWin () {
