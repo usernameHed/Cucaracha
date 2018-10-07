@@ -71,6 +71,9 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     private float radiusSphere = 0.3f;
     private bool isGrowing = false;
 
+
+    private Vector3 bloodVect = new Vector3(0, 0, 0);
+
     /// <summary>
     /// called by IA at each frame
     /// </summary>
@@ -293,6 +296,11 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
         isDying = true;
 
+        bloodVect = rb.transform.position + new Vector3(0.0f,0.0f,-0.1f);
+        
+        
+        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.BloodSplash, bloodVect, rb.transform.rotation * Quaternion.Euler(90,0,0), ObjectsPooler.Instance.transform);
+
         animator.SetTrigger("Death");
         StartCoroutine(RealyKill(addCadavre));
     }
@@ -304,7 +312,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         if (addCadavre)
             ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
 
-        
+        //
 
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);

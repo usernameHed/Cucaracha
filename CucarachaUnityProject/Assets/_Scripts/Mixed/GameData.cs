@@ -29,6 +29,8 @@ public static class GameData
         DeathCucaracha,
         Food,
         DeadCuca,
+        DeathParticle,
+        BloodSplash,
     }
 
     public enum Layers
