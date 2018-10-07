@@ -33,7 +33,8 @@ public class Blender : MonoBehaviour
             if (cuca.IsDying)
                 return;
             animator.SetTrigger("RoachCollision");
-
+            CameraShake.Shake(0.1f, 0.05f);
+            //GameManager.Instance.CameraObject.GetComponent<CameraShake>().cShake(1.0f, 1.0f);
 
             juiceQuantity++;
             ChangeSlider();
