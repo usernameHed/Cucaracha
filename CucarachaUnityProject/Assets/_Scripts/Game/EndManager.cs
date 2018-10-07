@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class EndManager : MonoBehaviour {
@@ -8,6 +9,9 @@ public class EndManager : MonoBehaviour {
 	public Animator LiquidEndAnimator;
 	public CanvasGroup GameOverPanel;
 	public CanvasGroup NextLevelPanel;
+
+	[SerializeField]
+	AudioMixerSnapshot m_audioOn, m_audioOff;
 
 	private void OnEnable () {
 		EventManager.StartListening (GameData.Event.GameOver, GameOver);
@@ -52,14 +56,17 @@ public class EndManager : MonoBehaviour {
 
 	public void Menu () {
 		GameManager.Instance.SceneManagerLocal.PlayPrevious ();
+		m_audioOn.TransitionTo(3);
 	}
 
 	public void Restart () {
 		GameManager.Instance.SceneManagerLocal.PlayIndex(2);
+		m_audioOn.TransitionTo(3);
 	}
 
 	public void NextLevel () {
 		GameManager.Instance.SceneManagerLocal.PlayNext();
+		m_audioOn.TransitionTo(3);
 	}
 
 	public void Quit () {
@@ -73,5 +80,6 @@ public class EndManager : MonoBehaviour {
 
 	private void ShowLiquid (bool show) {
 		LiquidEndAnimator.SetTrigger (show ? "End" : "Restart");
+		m_audioOff.TransitionTo(3);
 	}
 }

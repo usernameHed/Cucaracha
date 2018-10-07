@@ -3,7 +3,13 @@ guid: 7104e39f9437f034a868536b32517273
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - LiquidEndAnimator: {instanceID: 0}
+  - GameOverPanel: {instanceID: 0}
+  - NextLevelPanel: {instanceID: 0}
+  - m_audioOn: {fileID: 24500006, guid: b9464ac5716573844bf2febbf9edc071, type: 2}
+  - m_audioOff: {fileID: 245475596221941748, guid: b9464ac5716573844bf2febbf9edc071,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

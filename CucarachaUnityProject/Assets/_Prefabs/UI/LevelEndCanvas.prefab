@@ -157,7 +157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1195138541086066
 GameObject:
   m_ObjectHideFlags: 1
@@ -2162,6 +2162,9 @@ MonoBehaviour:
   LiquidEndAnimator: {fileID: 95963532289595728}
   GameOverPanel: {fileID: 225716146048564168}
   NextLevelPanel: {fileID: 225799587364502460}
+  m_audioOn: {fileID: 24500006, guid: b9464ac5716573844bf2febbf9edc071, type: 2}
+  m_audioOff: {fileID: 245475596221941748, guid: b9464ac5716573844bf2febbf9edc071,
+    type: 2}
 --- !u!114 &114857944396364202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2604,7 +2607,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.45898438, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224076941055701840
 RectTransform:
@@ -2943,7 +2946,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -349.99997, y: 0}
+  m_SizeDelta: {x: -349.74182, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224537665482320846
 RectTransform:
@@ -2979,7 +2982,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.45898438, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224703127212656114
 RectTransform:

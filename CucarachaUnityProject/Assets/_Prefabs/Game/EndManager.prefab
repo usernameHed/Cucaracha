@@ -51,3 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7104e39f9437f034a868536b32517273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiquidEndAnimator: {fileID: 0}
+  GameOverPanel: {fileID: 0}
+  NextLevelPanel: {fileID: 0}
+  m_audioOn: {fileID: 24500006, guid: b9464ac5716573844bf2febbf9edc071, type: 2}
+  m_audioOff: {fileID: 245475596221941748, guid: b9464ac5716573844bf2febbf9edc071,
+    type: 2}
