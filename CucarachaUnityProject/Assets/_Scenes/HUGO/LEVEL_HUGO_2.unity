@@ -454,6 +454,11 @@ Prefab:
       propertyPath: parentFoodUI
       value: 
       objectReference: {fileID: 879588765}
+    - target: {fileID: 114398017827106416, guid: 75c81b1887c57634ea9dbeb9a4f551df,
+        type: 2}
+      propertyPath: foodNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c81b1887c57634ea9dbeb9a4f551df, type: 2}
   m_IsPrefabAsset: 0
