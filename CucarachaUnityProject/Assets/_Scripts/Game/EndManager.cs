@@ -28,7 +28,14 @@ public class EndManager : MonoBehaviour {
 	private void GameWin () {
 		Debug.Log ("GAME WIN");
 		ShowLiquid (true);
-		StartCoroutine (ShowCanvasGroup (NextLevelPanel));
+
+		//if (CucarachaManager.Instance.isLastLevel) {
+		//NextLevel ();
+		//}else 
+		{
+			StartCoroutine (ShowCanvasGroup (NextLevelPanel));
+		}
+
 	}
 
 	private IEnumerator ShowCanvasGroup (CanvasGroup group, float delay = 1.0f) {

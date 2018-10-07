@@ -21,7 +21,10 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     private float maximumScore;
 
     [SerializeField]
-    public GameObject Slider;
+    private JuiceGauge juice;
+
+    //[SerializeField]
+    //public GameObject Slider;
 
     [SerializeField]
     private FrequencyTimer frequency;
@@ -47,7 +50,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     [SerializeField, ReadOnly]
     private List<Lamp> lamp = new List<Lamp>();
 
-    private Slider sliderScript;
+    //private Slider sliderScript;
 
     public void AddCucaracha(CucarachaController cuca)
     {
@@ -85,14 +88,19 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         lamp.Remove(item);
     }
 
+    public void SetJuice()
+    {
+        juice.SetValue(GetJuice());
+    }
+
     public void InitScene()
     {
         Debug.Log("INIT Cucaracha manager ! !!");
         cucarachas.Clear();
         FoodManager.Instance.Init();
         spawner.SpawnCuca(numberCucarachaLevel);
-        sliderScript = Slider.GetComponent<Slider>();
-        maximumScore = sliderScript.maxValue * (percentToWin / 100);
+        //sliderScript = Slider.GetComponent<Slider>();
+        maximumScore = juice.maxInput * (percentToWin / 100);
         isWin = false;
         isLose = false;
     }
@@ -137,7 +145,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
         int countCuca = GetCurarachaList().Count;
 
-        if (sliderScript.value + countCuca < maximumScore)
+        if (juiceQuantity + countCuca < maximumScore)
         {
             isLose = true;
             EventManager.TriggerEvent(GameData.Event.GameOver);
@@ -168,7 +176,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     private void GameOver()
     {
-        Debug.Log("ici game over !");    
+        //Debug.Log("ici game over !");    
     }
 
     private void OnDisable()
