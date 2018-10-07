@@ -26,6 +26,9 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     [SerializeField]
     private FrequencyTimer frequency;
 
+    private bool isWin = false;
+    private bool isLose = false;
+
     [Space(10)]
 
     [SerializeField]
@@ -90,6 +93,8 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         spawner.SpawnCuca(numberCucarachaLevel);
         sliderScript = Slider.GetComponent<Slider>();
         maximumScore = sliderScript.maxValue * (percentToWin / 100);
+        isWin = false;
+        isLose = false;
     }
 
     [Button]
@@ -112,9 +117,13 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     private bool TestWin()
     {
+        if (isWin || isLose)
+            return (false);
+
         if (juiceQuantity >= maximumScore)
         {
-            Debug.Log("It's over 9000 ! ");
+            isWin = true;
+            //Debug.Log("It's over 9000 ! ");
             EventManager.TriggerEvent(GameData.Event.GameWin);
             return (true);
         }
@@ -123,10 +132,14 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     private void TestLose()
     {
+        if (isLose || isWin)
+            return;
+
         int countCuca = GetCurarachaList().Count;
 
         if (sliderScript.value + countCuca < maximumScore)
         {
+            isLose = true;
             EventManager.TriggerEvent(GameData.Event.GameOver);
         }
     }
