@@ -15,6 +15,10 @@ public class JuiceGauge : MonoBehaviour {
 
 	private float parentHeight = 100;
 
+	void Start () {
+		SetValue (0.0f);
+	}
+
 	void OnRectTransformDimensionsChange () {
 		parentHeight = (liquid.rectTransform.parent as RectTransform).rect.height;
 	}
