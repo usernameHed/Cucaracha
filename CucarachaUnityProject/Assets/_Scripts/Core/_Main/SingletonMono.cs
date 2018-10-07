@@ -16,16 +16,15 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
     public static T Instance
     {
         get
-        {//*
-            if (applicationIsQuitting)
+        {
+            /*if (applicationIsQuitting)
             {
-                /*Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
+                Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
                     "' already destroyed on application quit." +
-                    " Won't create again - returning null.");*/
+                    " Won't create again - returning null.");
                 return null;
-            }/*/
+            }*/
 
-            //*/
             lock (_lock)
             {
                 if (_instance == null)
@@ -39,7 +38,7 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
                             " Reopening the scene might fix it.");
                         //Debug.Break();
                         //DestroyImmediate(FindObjectsOfType(typeof(T)))
-                        Destroy(_instance.gameObject);
+                        //DestroyImmediate(_instance.gameObject);
                         return _instance;
                     }
 
@@ -71,8 +70,7 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private static bool applicationIsQuitting = false;
-    //*
+    /*private static bool applicationIsQuitting = false;
     /// <summary>
     /// When Unity quits, it destroys objects in a random order.
     /// In principle, a Singleton is only destroyed when application quits.
@@ -84,5 +82,5 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
     public void OnDestroy()
     {
         applicationIsQuitting = true;
-    }//*/
+    }*/
 }
