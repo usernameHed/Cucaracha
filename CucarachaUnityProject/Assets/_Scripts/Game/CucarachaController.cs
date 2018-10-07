@@ -14,6 +14,11 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [SerializeField, FoldoutGroup("Eat")]
     private float valueToGrow = 0.05f;
 
+    [SerializeField, FoldoutGroup("OnWall")]
+    private float speedTurnOnWall = 10f;
+    [SerializeField, FoldoutGroup("OnWall")]
+    private float speedMoveOnWall = 5f;
+
     [SerializeField, ReadOnly]
     private bool isEating = false;
 
@@ -73,7 +78,8 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
     public void InvertDirection(Vector3 dir)
     {
-        dirCura = dir;
+        dirCura = dir * speedTurnOnWall;
+        UnityMovement.MoveByForcePushing_WithPhysics(rb, dirCura, speedPlayer * GetOnlyForward() * speedMoveOnWall * Time.deltaTime);
         //dirCura = Quaternion.Euler(dir) * dirCura;
         //print(dirCura);
         //dirCura = new Vector3(-dirCura.x, -dirCura.y, 0);
