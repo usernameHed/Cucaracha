@@ -57,9 +57,35 @@ public class FoodManager : SingletonMono<FoodManager>
         }
     }
 
+    private GameObject CheckForObjectUnderMouse()
+    {
+        //Vector2 touchPostion = GameManager.Instance.CameraMain.ScreenToWorldPoint(Input.mousePosition);
+        Ray ray = GameManager.Instance.CameraMain.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Ground", "Wall", "Object")))
+        {
+            return (hit.transform.gameObject);
+        }
+        return (null);
+    }
+
+    private bool CleanClick()
+    {
+        GameObject obj = CheckForObjectUnderMouse();
+        if (!obj)
+            return (false);
+
+        Debug.Log(obj.name);
+        if (obj.name == "Plane" || obj.CompareTag(GameData.Prefabs.Cucaracha.ToString()))
+        {
+            return (true);
+        }
+        return (false);
+    }
+
     private void HandleFood()
     {
-        if (Input.GetMouseButtonUp(1) && CanAdd())
+        if (Input.GetMouseButtonUp(1) && CanAdd() && CleanClick())
         {
             Debug.Log("create food");
             Vector3 pos = Input.mousePosition;

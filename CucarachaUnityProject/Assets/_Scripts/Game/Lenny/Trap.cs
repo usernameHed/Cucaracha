@@ -12,7 +12,7 @@ public class Trap : MonoBehaviour
             if (!cuca)
                 cuca = collision.transform.parent.GetComponent<CucarachaController>();
 
-            Debug.Log("Cucaracha is dead with Trap");
+            //Debug.Log("Cucaracha is dead with Trap");
             cuca.Kill();
         }
     }

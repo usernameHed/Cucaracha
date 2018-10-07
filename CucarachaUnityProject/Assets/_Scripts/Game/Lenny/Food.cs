@@ -30,7 +30,7 @@ public class Food : MonoBehaviour, IKillable, IPooledObject
     {
         gameObject.SetActive(true);
         life.Init();
-        Debug.Log("spawn: " + gameObject.name);
+        //Debug.Log("spawn: " + gameObject.name);
         isKilled = false;
 
         if (!isDeadCuca)
@@ -111,7 +111,7 @@ public class Food : MonoBehaviour, IKillable, IPooledObject
 
         transform.SetParent(ObjectsPooler.Instance.transform);
         //Destroy(gameObject);
-        Debug.Log("ici desactive !");
+        //Debug.Log("ici desactive !");
         gameObject.SetActive(false);
     }
 
