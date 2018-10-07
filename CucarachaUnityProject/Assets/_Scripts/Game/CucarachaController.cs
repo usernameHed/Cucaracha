@@ -241,7 +241,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     /// </summary>
     private void GameOver()
     {
-        Debug.Log("game over !!");
+        //Debug.Log("game over !!");
         enabledScript = false;
     }
 
