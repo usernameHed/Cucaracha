@@ -8,12 +8,13 @@ public class Blender : MonoBehaviour
   int juiceQuantity = 0;
   public GameObject Slider;
   private float maximumScore;
-
+  public Animator animator;
   // Use this for initialization
   void Start()
   {
     changeSlider();
     maximumScore = Slider.GetComponent<Slider>().maxValue;
+    
   }
 
   // Update is called once per frame
@@ -24,7 +25,7 @@ public class Blender : MonoBehaviour
   private void OnTriggerEnter(Collider collision)
   {
     if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
-
+      animator.SetTrigger("RoachCollision");
       juiceQuantity++;
       changeSlider();
 
