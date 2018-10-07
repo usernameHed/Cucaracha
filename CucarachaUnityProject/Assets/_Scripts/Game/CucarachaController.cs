@@ -14,10 +14,18 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [SerializeField, FoldoutGroup("Eat")]
     private float valueToGrow = 0.05f;
 
+    [SerializeField]
+    private float magnitudeRun = 0.3f;
+    [SerializeField]
+    private float timeOfDeath = 0.5f;
+
     [SerializeField, FoldoutGroup("OnWall")]
     private float speedTurnOnWall = 10f;
     [SerializeField, FoldoutGroup("OnWall")]
     private float speedMoveOnWall = 5f;
+
+    [SerializeField]
+    private Animator animator;
 
     [SerializeField, ReadOnly]
     private bool isEating = false;
@@ -48,8 +56,6 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     
     public Rigidbody rb;                   //link to rigidbody
     [SerializeField]
-    private Animator animator;
-    [SerializeField]
     private IACucaracha ia;
     public IACucaracha GetIA() { return (ia); }
 
@@ -71,9 +77,21 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [Button]
     public void ChangeDirectionIA(Vector2 dir)
     {
-       
-        dirCura = new Vector3(dir.x, dir.y, 0);       
-        
+        float oldMagnitude = dirCura.magnitude;
+        dirCura = new Vector3(dir.x, dir.y, 0);
+        float newMagnitude = dirCura.magnitude;
+
+        if (newMagnitude >= magnitudeRun && oldMagnitude < magnitudeRun)
+        {
+            animator.SetTrigger("Walking");
+        }
+        else if (newMagnitude < magnitudeRun && oldMagnitude >= magnitudeRun)
+        {
+            if (isInsideFood)
+                animator.SetTrigger("Eating");
+            else
+                animator.SetTrigger("Idle");
+        }
     }
 
     public void InvertDirection(Vector3 dir)
@@ -92,6 +110,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 
         radiusSphere = sphereCollider.radius;
         isDying = false;
+        animator.SetTrigger("Idle");
         //EventManager.StartListening(GameData.Event.GameWin, GameOver);
     }
 
@@ -154,6 +173,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     {
         //private Vector3 dirCura = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
         //Debug.Log("spawned !!");
+        animator.SetTrigger("Idle");
         CucarachaManager.Instance.AddCucaracha(this);
         ChangeDirectionIA(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
     }
@@ -174,14 +194,12 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     /// </summary>
     private void InputPlayer()
     {
+        bool oldHasMoved = hasMoved;
+
         horiz = Input.GetAxisRaw("Horizontal");
         verti = Input.GetAxisRaw("Vertical");
 
         hasMoved = (horiz != 0 || verti != 0);
-        /*if (hasMoved)
-        {
-            dirCura = new Vector3(horiz, verti, 0);
-        }*/
     }
 
     private float GetOnlyForward()
@@ -202,6 +220,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
             UnityMovement.MoveByForcePushing_WithPhysics(rb, rb.transform.forward, speedPlayer * GetOnlyForward() * Time.deltaTime);
             rb.transform.rotation = ExtQuaternion.DirObject(rb.transform.rotation, dirCura, rotationSpeed, ExtQuaternion.TurnType.Y);
        //} 
+       
     }
 
     /// <summary>
@@ -273,6 +292,14 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
             return;
 
         isDying = true;
+
+        animator.SetTrigger("Death");
+        StartCoroutine(RealyKill(addCadavre));
+    }
+
+    private IEnumerator RealyKill(bool addCadavre)
+    {
+        yield return new WaitForSeconds(timeOfDeath);
 
         if (addCadavre)
             ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
