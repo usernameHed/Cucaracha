@@ -1005,6 +1005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInput: 50
+  minOutput: 0.15
   maxOutput: 0.9
   liquid: {fileID: 114766647689675460}
   bottle: {fileID: 114510946532280826}

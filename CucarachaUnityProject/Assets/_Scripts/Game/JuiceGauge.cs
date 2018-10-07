@@ -9,6 +9,8 @@ public class JuiceGauge : MonoBehaviour
     public float maxInput;
 
     [Range(0.0f, 1.0f)]
+    public float minOutput;
+    [Range(0.0f, 1.0f)]
     public float maxOutput;
 
     public Image liquid;
@@ -28,7 +30,7 @@ public class JuiceGauge : MonoBehaviour
 
     public void SetValue(float value)
     {
-        float normalizedHeight = (value / maxInput) * maxOutput;
+        float normalizedHeight = (value / maxInput) * (maxOutput - minOutput) + minOutput;
         if (normalizedHeight > 1)
             normalizedHeight = 1;
         //Debug.Log (parentHeight + " ; " + normalizedHeight);
