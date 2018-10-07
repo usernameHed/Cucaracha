@@ -21,6 +21,9 @@ public class FoodManager : SingletonMono<FoodManager>
     [SerializeField, ReadOnly]
     private List<Food> foodList = new List<Food>();
 
+    [SerializeField]
+    AudioSource m_sourceOk, m_sourceError;
+
     public void Init()
     {
         foodUI.Clear();
@@ -102,21 +105,29 @@ public class FoodManager : SingletonMono<FoodManager>
 
     private void HandleFood()
     {
-        if (Input.GetMouseButtonUp(1) && CanAdd() && CleanClick())
+        if (Input.GetMouseButtonUp(1) && CleanClick())
         {
-            Debug.Log("create food");
-            Vector3 pos = Input.mousePosition;
-            pos.z = 0;// transform.position.z - Camera.main.transform.position.z;
-            pos = GameManager.Instance.CameraMain.ScreenToWorldPoint(pos);
-            pos.y = 0;
-            //GameObject foodObject = Instantiate(prefabsFood, pos, Quaternion.identity, transform);
-            GameObject foodObject = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Food, pos, Quaternion.identity, transform);
-      
-            Food food = foodObject.GetComponent<Food>();
-            food.addedFromLevel = false;
+            if(CanAdd())
+            {
+                Debug.Log("create food");
+                Vector3 pos = Input.mousePosition;
+                pos.z = 0;// transform.position.z - Camera.main.transform.position.z;
+                pos = GameManager.Instance.CameraMain.ScreenToWorldPoint(pos);
+                pos.y = 0;
+                //GameObject foodObject = Instantiate(prefabsFood, pos, Quaternion.identity, transform);
+                GameObject foodObject = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Food, pos, Quaternion.identity, transform);
+        
+                Food food = foodObject.GetComponent<Food>();
+                food.addedFromLevel = false;
 
-            StartCoroutine(MoveFood(foodObject));
-        }
+                StartCoroutine(MoveFood(foodObject));
+                m_sourceOk.Play();
+            }
+            else
+            {
+                m_sourceError.Play();
+            }
+        }        
     }
 
     private IEnumerator MoveFood(GameObject food)
