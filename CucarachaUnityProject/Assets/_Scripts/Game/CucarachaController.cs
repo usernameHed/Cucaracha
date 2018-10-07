@@ -227,7 +227,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     /// </summary>
     private void FixedUpdate()
     {
-        if (!enabledScript)
+        if (!enabledScript || isDying)
             return;
         MovePlayer();
     }
@@ -252,6 +252,8 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
             return;
 
         isDying = true;
+
+        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
 
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);

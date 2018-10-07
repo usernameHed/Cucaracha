@@ -5,47 +5,49 @@ using UnityEngine.UI;
 
 public class Blender : MonoBehaviour
 {
-  int juiceQuantity = 0;
-  public GameObject Slider;
-  private float maximumScore;
+    int juiceQuantity = 0;
+    public GameObject Slider;
+    private float maximumScore;
 
-  // Use this for initialization
-  void Start()
-  {
-    changeSlider();
-    maximumScore = Slider.GetComponent<Slider>().maxValue;
-  }
+    private Slider sliderScript;
 
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
-  private void OnTriggerEnter(Collider collision)
-  {
-    if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString())) {
-
-      juiceQuantity++;
-      changeSlider();
-
-      Debug.Log("Juice quantity : " + juiceQuantity);
-
-
-
-      if (juiceQuantity > maximumScore) {
-        Debug.Log("It's over 9000 ! ");
-
-      }
-
-
-      Debug.Log("Cucaracha is dead with Blender");
+    // Use this for initialization
+    void Start()
+    {
+        sliderScript = Slider.GetComponent<Slider>();
+        ChangeSlider();
+        maximumScore = sliderScript.maxValue;
     }
 
-  }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
+        {
+            CucarachaController cuca = collision.gameObject.GetComponent<CucarachaController>();
+            if (!cuca)
+                cuca = collision.transform.parent.GetComponent<CucarachaController>();
 
-  void changeSlider()
-  {
-    Slider.GetComponent<Slider>().value = juiceQuantity;
+            if (cuca.IsDying)
+                return;
 
-  }
+
+            juiceQuantity++;
+            ChangeSlider();
+
+            Debug.Log("Juice quantity : " + juiceQuantity);
+
+            cuca.Kill();
+
+            if (juiceQuantity > maximumScore)
+            {
+                Debug.Log("It's over 9000 ! ");
+            }
+
+        }
+    }
+
+    void ChangeSlider()
+    {
+        sliderScript.value = juiceQuantity;
+    }
 }
