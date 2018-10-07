@@ -222,7 +222,7 @@ MonoBehaviour:
   radiusWhenEating: 0.25
   valueToGrow: 0.005
   magnitudeRun: 0.4
-  timeOfDeath: 0.7
+  timeOfDeath: 0.5
   speedTurnOnWall: 1.5
   speedMoveOnWall: 5
   animator: {fileID: 95275747784080928}
