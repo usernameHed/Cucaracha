@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Blender : MonoBehaviour
 {
-    int juiceQuantity = 0;
-    public GameObject Slider;
-    private float maximumScore;
-
-    private Slider sliderScript;
+  int juiceQuantity = 0;
+  public GameObject Slider;
+  private float maximumScore;
+  public Animator animator;
+  private Slider sliderScript;
 
     // Use this for initialization
     void Start()
@@ -23,12 +23,14 @@ public class Blender : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
+
             CucarachaController cuca = collision.gameObject.GetComponent<CucarachaController>();
             if (!cuca)
                 cuca = collision.transform.parent.GetComponent<CucarachaController>();
 
             if (cuca.IsDying)
                 return;
+            animator.SetTrigger("RoachCollision");
 
 
             juiceQuantity++;
