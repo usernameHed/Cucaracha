@@ -241,7 +241,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     /// </summary>
     private void GameOver()
     {
-        Debug.Log("game over !!");
+        //Debug.Log("game over !!");
         enabledScript = false;
     }
 
@@ -304,8 +304,13 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         if (addCadavre)
             ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
 
+        
+
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);
+
+        CucarachaManager.Instance.TestEndLevel();
+
         gameObject.SetActive(false);
     }
 }

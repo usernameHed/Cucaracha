@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 [TypeInfoBox("[ILevelLocal] Manage Setup Scene behaviour")]
 public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
@@ -9,11 +10,24 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     [SerializeField]
     private int numberCucarachaLevel = 300;
 
+    [SerializeField, Range(1, 100)]
+    private float percentToWin = 80.0f;
+
+    private int juiceQuantity = 0;
+    public void AddJuice() { juiceQuantity++; }
+    public int GetJuice() { return (juiceQuantity); }
+
+    [SerializeField, ReadOnly]
+    private float maximumScore;
+
     [SerializeField]
     public GameObject Slider;
 
     [SerializeField]
     private FrequencyTimer frequency;
+
+    private bool isWin = false;
+    private bool isLose = false;
 
     [Space(10)]
 
@@ -32,6 +46,8 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     [SerializeField, ReadOnly]
     private List<Lamp> lamp = new List<Lamp>();
+
+    private Slider sliderScript;
 
     public void AddCucaracha(CucarachaController cuca)
     {
@@ -75,6 +91,10 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         cucarachas.Clear();
         FoodManager.Instance.Init();
         spawner.SpawnCuca(numberCucarachaLevel);
+        sliderScript = Slider.GetComponent<Slider>();
+        maximumScore = sliderScript.maxValue * (percentToWin / 100);
+        isWin = false;
+        isLose = false;
     }
 
     [Button]
@@ -86,6 +106,41 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
             //cuca.GetIA().
             Vector2 dir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
             cuca.ChangeDirectionIA(dir);
+        }
+    }
+
+    public void TestEndLevel()
+    {
+        if (!TestWin())
+            TestLose();
+    }
+
+    private bool TestWin()
+    {
+        if (isWin || isLose)
+            return (false);
+
+        if (juiceQuantity >= maximumScore)
+        {
+            isWin = true;
+            //Debug.Log("It's over 9000 ! ");
+            EventManager.TriggerEvent(GameData.Event.GameWin);
+            return (true);
+        }
+        return (false);
+    }
+
+    private void TestLose()
+    {
+        if (isLose || isWin)
+            return;
+
+        int countCuca = GetCurarachaList().Count;
+
+        if (sliderScript.value + countCuca < maximumScore)
+        {
+            isLose = true;
+            EventManager.TriggerEvent(GameData.Event.GameOver);
         }
     }
 

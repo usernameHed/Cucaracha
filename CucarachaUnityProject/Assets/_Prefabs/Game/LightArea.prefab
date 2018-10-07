@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightOn: 0
-  weight: 1
+  weight: 1.5
   lightObject: {fileID: 1275079466943116}
 --- !u!135 &135220974922293560
 SphereCollider:
