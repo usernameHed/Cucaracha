@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberCucarachaLevel: 1000
+  Slider: {fileID: 0}
   frequency:
     updateFrequency: 0.05
     notTheFirstTime: 0
@@ -88,5 +89,9 @@ MonoBehaviour:
   foodUI:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   prefabsFood: {fileID: 1647027819164116, guid: f89fdf98d37a6a84ca9c4b673041c34f,
     type: 2}
+  foodList: []

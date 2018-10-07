@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Blender : MonoBehaviour
 {
   int juiceQuantity = 0;
-  public GameObject Slider;
+  private GameObject Slider;
   private float maximumScore;
   public Animator animator;
   private Slider sliderScript;
@@ -14,6 +14,8 @@ public class Blender : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Slider = CucarachaManager.Instance.Slider;
+
         sliderScript = Slider.GetComponent<Slider>();
         ChangeSlider();
         maximumScore = sliderScript.maxValue;

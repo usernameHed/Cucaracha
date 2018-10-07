@@ -10,6 +10,9 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     private int numberCucarachaLevel = 300;
 
     [SerializeField]
+    public GameObject Slider;
+
+    [SerializeField]
     private FrequencyTimer frequency;
 
     [Space(10)]
