@@ -12,6 +12,8 @@ public class LifeFood : MonoBehaviour, IKillable
 
     private int realLifeFood = 100;
 
+    float soundVolume = 0;
+
     public void Init()
     {
         realLifeFood = lifeFood;
@@ -19,6 +21,9 @@ public class LifeFood : MonoBehaviour, IKillable
 
     [SerializeField]
     private Food food;
+
+    [SerializeField]
+    AudioSource audio;
 
     private void OnTriggerStay(Collider other)
     {
@@ -31,6 +36,7 @@ public class LifeFood : MonoBehaviour, IKillable
             //GameData
             if (cuca.Eat())
             {
+                soundVolume = .5f;
                 realLifeFood--;
                 //Debug.Log("life food : " + realLifeFood);
             }
@@ -42,6 +48,14 @@ public class LifeFood : MonoBehaviour, IKillable
             }
         }
 
+    }
+
+    private void Update()
+    {
+        if(soundVolume > 0)
+            soundVolume -= Time.deltaTime;
+
+        audio.volume = soundVolume;
     }
 
     public void Kill()
