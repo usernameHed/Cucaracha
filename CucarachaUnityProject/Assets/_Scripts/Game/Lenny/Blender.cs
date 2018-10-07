@@ -6,14 +6,8 @@ using UnityEngine.UI;
 
 public class Blender : MonoBehaviour
 {
-    [SerializeField, Range(1, 100)]
-    private float percentToWin = 80.0f;
-
-    int juiceQuantity = 0;
+    
     private GameObject Slider;
-
-    [SerializeField, ReadOnly]
-    private float maximumScore;
 
     public Animator animator;
     private Slider sliderScript;
@@ -28,7 +22,7 @@ public class Blender : MonoBehaviour
 
         sliderScript = Slider.GetComponent<Slider>();
         ChangeSlider();
-        maximumScore = sliderScript.maxValue * (percentToWin / 100);
+        
         isWinned = false;
         isLoosed = false;
     }
@@ -50,49 +44,18 @@ public class Blender : MonoBehaviour
             animator.SetTrigger("RoachCollision");
 
 
-            juiceQuantity++;
+            CucarachaManager.Instance.AddJuice();
             ChangeSlider();
 
-            Debug.Log("Juice quantity : " + juiceQuantity);
+            Debug.Log("Juice quantity : " + CucarachaManager.Instance.GetJuice());
 
             cuca.Kill(false);
-
-
-            TestWin();
-            TestLose();
         }
     }
 
-    private void TestWin()
-    {
-        if (isLoosed)
-            return;
-
-        if (juiceQuantity >= maximumScore)
-        {
-            Debug.Log("It's over 9000 ! ");
-            isWinned = true;
-            EventManager.TriggerEvent(GameData.Event.GameWin);
-        }
-    }
-
-    private void TestLose()
-    {
-        if (isWinned)
-            return;
-
-        int countCuca = CucarachaManager.Instance.GetCurarachaList().Count;
-
-        if (sliderScript.value + countCuca < maximumScore)
-        {
-            isLoosed = true;
-            EventManager.TriggerEvent(GameData.Event.GameOver);
-            
-        }
-    }
 
     private void ChangeSlider()
     {
-        sliderScript.value = juiceQuantity;
+        sliderScript.value = CucarachaManager.Instance.GetJuice(); //juiceQuantity;
     }
 }
