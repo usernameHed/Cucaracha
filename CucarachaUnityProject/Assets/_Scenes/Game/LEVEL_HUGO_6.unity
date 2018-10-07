@@ -1611,7 +1611,7 @@ MonoBehaviour:
   cameraObject: {fileID: 168356576}
   sceneToLoad:
   - active: 1
-    scene: TheLastScene
+    scene: LEVEL_HUGO_7
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1

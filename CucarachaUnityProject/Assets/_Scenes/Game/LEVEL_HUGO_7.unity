@@ -507,19 +507,29 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224045792004007980, guid: cfa27d71919e3c347a2f2d131e0afbe7,
+    - target: {fileID: 224700064409662794, guid: cfa27d71919e3c347a2f2d131e0afbe7,
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224700064409662794, guid: cfa27d71919e3c347a2f2d131e0afbe7,
+    - target: {fileID: 224525358653869094, guid: cfa27d71919e3c347a2f2d131e0afbe7,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -349.99997
+      objectReference: {fileID: 0}
+    - target: {fileID: 224525358653869094, guid: cfa27d71919e3c347a2f2d131e0afbe7,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224045792004007980, guid: cfa27d71919e3c347a2f2d131e0afbe7,
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1164184406472352, guid: cfa27d71919e3c347a2f2d131e0afbe7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfa27d71919e3c347a2f2d131e0afbe7, type: 2}
@@ -1066,7 +1076,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1772781069977112, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a1ee3cd5609e9e48a7dc380dd04d4a4, type: 2}
@@ -1873,7 +1883,7 @@ MonoBehaviour:
   cameraObject: {fileID: 168356576}
   sceneToLoad:
   - active: 1
-    scene: LEVEL_2
+    scene: TheLastScene
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
@@ -1882,7 +1892,16 @@ MonoBehaviour:
     swapWhenLoaded: 0
     sceneToChargeAfterAdditive: 
   - active: 1
-    scene: MENU
+    scene: Menu
+    loadAtStart: 0
+    loadAfterXSecond: 0
+    fade: 1
+    fadeTime: 1.5
+    additive: 0
+    swapWhenLoaded: 0
+    sceneToChargeAfterAdditive: 
+  - active: 1
+    scene: LEVEL_HUGO_7
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
