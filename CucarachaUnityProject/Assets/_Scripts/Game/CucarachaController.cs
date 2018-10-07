@@ -71,9 +71,10 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         
     }
 
-    public void InvertDirection()
+    public void InvertDirection(Vector3 dir)
     {
-        dirCura = Quaternion.Euler(180, 180, 0) * dirCura;
+        dirCura = dir;
+        //dirCura = Quaternion.Euler(dir) * dirCura;
         //print(dirCura);
         //dirCura = new Vector3(-dirCura.x, -dirCura.y, 0);
     }
