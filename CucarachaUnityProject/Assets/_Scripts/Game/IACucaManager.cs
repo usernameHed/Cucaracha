@@ -17,7 +17,7 @@ public class IACucaManager : MonoBehaviour
 
 
     /// <summary>
-    /// 
+    /// STATE MACHINE FOR CUCA AI
     /// </summary>
     public void Machine()
     {
@@ -28,7 +28,7 @@ public class IACucaManager : MonoBehaviour
         Lamp lightInfo;
         Vector3 vectDir;
         Vector2 stopVect;
-
+        int count = 0;
         int state;
         float sinVal;
         float x, y;
@@ -89,7 +89,16 @@ public class IACucaManager : MonoBehaviour
                         x = generateNormalRandom(0.0f, 0.5f);
                         y = generateNormalRandom(0.0f, 0.5f);
 
-                        cuca.ChangeDirectionIA(new Vector2(stopVect.x + x, stopVect.y + y));
+                        
+
+                        if (Random.Range(0, 100) == 1)
+                        {
+                            cuca.ChangeDirectionIA(new Vector2(stopVect.x + x + 5.0f, stopVect.y + y + 5.0f));
+                        }
+                        else
+                        {
+                            cuca.ChangeDirectionIA(new Vector2(stopVect.x + x, stopVect.y + y));
+                        }
 
                         if (cuca.isInsideLight)
                         {
@@ -127,6 +136,8 @@ public class IACucaManager : MonoBehaviour
                             state = 0;
                             break;
                         }
+
+                        
                         vectDir = -(cuca.rb.transform.position - foodInfo.transform.position); // Create vector for direction
                         vectDir.Normalize();
 
@@ -165,10 +176,13 @@ public class IACucaManager : MonoBehaviour
                             state = 0;
                             break;
                         }
+                        
                         vectDir = -(cuca.rb.transform.position - foodInfo.transform.position);
                         vectDir.Normalize();
+                        x = generateNormalRandom(0.0f, 0.3f);
+                        y = generateNormalRandom(0.0f, 0.3f);
 
-                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + Random.Range(-0.2f, 0.2f)) , (vectDir.y + Random.Range(-0.2f, 0.2f))));
+                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + x) , (vectDir.y + y)));
 
                         if (cuca.isInsideLight)
                         {
@@ -220,8 +234,8 @@ public class IACucaManager : MonoBehaviour
                         }
                         else
                         {
-                            randInt = Random.Range(1, 6);
-                            if (randInt == 1 || randInt == 2)
+                            randInt = Random.Range(0, 2);
+                            if (randInt == 1 )
                             {
                                 state = 5;
                                 break;
@@ -242,8 +256,10 @@ public class IACucaManager : MonoBehaviour
                         }
                         vectDir = (cuca.rb.transform.position - lightInfo.transform.position);
                         vectDir.Normalize();
+                        x = generateNormalRandom(0.0f, 0.5f);
+                        y = generateNormalRandom(0.0f, 0.5f);
 
-                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + Random.Range(-0.2f, 0.2f)), (vectDir.y + Random.Range(-0.2f, 0.2f))));
+                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + x), (vectDir.y + y)));
 
                         if (!cuca.isInsideLight && cuca.isInsideFood)
                         {
@@ -260,16 +276,23 @@ public class IACucaManager : MonoBehaviour
                             state = 4;
                             break;
                         }
-
-                        break;
                     }
 
                 case 6: // Keep the direction for one more step to be sure to not stay near the light
                     {
 
-                        state = 0;
+                        if (count <= 5)
+                        {
+                            count++;
 
-                        break;
+                            break;
+                        }
+                        else
+                        {
+                            count = 0;
+                            state = 0;
+                            break;
+                        }
                     }
                 //====----
                   
