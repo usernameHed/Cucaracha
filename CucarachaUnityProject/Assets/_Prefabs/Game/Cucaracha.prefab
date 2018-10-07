@@ -202,6 +202,8 @@ MonoBehaviour:
   rotationSpeed: 500
   radiusWhenEating: 0.25
   valueToGrow: 0.005
+  speedTurnOnWall: 1.5
+  speedMoveOnWall: 5
   isEating: 0
   isInsideFood: 0
   isInsideLight: 0
