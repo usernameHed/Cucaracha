@@ -288,7 +288,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.25
+  m_Radius: 1
   m_Center: {x: 0.15, y: 0, z: -0.21}
 --- !u!212 &212362524655305264
 SpriteRenderer:
