@@ -277,7 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41fc1e905d25ecc4cb80df3166cc77ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slider: {fileID: 0}
   animator: {fileID: 95407936552574012}
 --- !u!135 &135900055772447328
 SphereCollider:

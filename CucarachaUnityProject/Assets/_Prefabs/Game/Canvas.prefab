@@ -812,6 +812,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 114364619955445620}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 0}
 --- !u!114 &114311632051010728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -853,6 +854,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 114813108706383090}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 0}
 --- !u!114 &114351281677420268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -910,6 +912,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 114090694948923910}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 0}
 --- !u!114 &114413078696072904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1032,6 +1035,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 114259249252867260}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 0}
 --- !u!114 &114603990898784388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1416,6 +1420,7 @@ MonoBehaviour:
   isFilled: 1
   image: {fileID: 114729297648361722}
   sprite: {fileID: 21300000, guid: fa485d530eba6c84999ba6ad99d77f1a, type: 3}
+  spriteNull: {fileID: 0}
 --- !u!222 &222048558033955276
 CanvasRenderer:
   m_ObjectHideFlags: 1
