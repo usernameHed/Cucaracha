@@ -33,6 +33,13 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
     [SerializeField, ReadOnly]
     private List<Lamp> lamp = new List<Lamp>();
 
+    AudioSource m_audioSource;
+
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
+
     public void AddCucaracha(CucarachaController cuca)
     {
         if (!cucarachas.Contains(cuca))
@@ -121,12 +128,27 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         EventManager.StopListening(GameData.Event.GameOver, GameOver);
     }
 
+    float GetGlobalVel()
+    {
+        float result = 0;
+
+        foreach (CucarachaController c in cucarachas)
+        {
+            result += c.rb.velocity.magnitude;
+        }
+
+        return result;
+    }
+
     private void Update()
     {
         if (frequency.Ready())
         {
             //Debug.Log("launch machine");
             iaManager.Machine();
+
+            m_audioSource.volume = 0.1f + GetGlobalVel() / 50;
+            m_audioSource.pitch = Mathf.Min(0.5f + GetGlobalVel() / 50, 1);
         }
     }
 }
