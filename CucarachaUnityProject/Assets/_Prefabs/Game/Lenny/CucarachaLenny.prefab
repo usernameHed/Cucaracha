@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114154312939920664}
   - component: {fileID: 212515345853837240}
   m_Layer: 9
-  m_Name: Cucaracha
+  m_Name: CucarachaLenny
   m_TagString: Cucaracha
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,6 +222,8 @@ MonoBehaviour:
   rotationSpeed: 500
   radiusWhenEating: 0.25
   valueToGrow: 0.005
+  speedTurnOnWall: 10
+  speedMoveOnWall: 5
   isEating: 0
   isInsideFood: 0
   isInsideLight: 0
