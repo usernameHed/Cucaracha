@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class IACucaManager : MonoBehaviour
 {
+
+    private static float generateNormalRandom(float mu, float sigma)
+    {
+        float rand1 = Random.Range(0.0f, 1.0f);
+        float rand2 = Random.Range(0.0f, 1.0f);
+
+        float n = Mathf.Sqrt(-2.0f * Mathf.Log(rand1)) * Mathf.Cos((2.0f * Mathf.PI) * rand2);
+
+        return (mu + sigma * n);
+    }
+
+
     /// <summary>
     /// 
     /// </summary>
@@ -11,12 +23,17 @@ public class IACucaManager : MonoBehaviour
     {
         List<CucarachaController> cucarachas = CucarachaManager.Instance.GetCurarachaList();
 
-        int state;
+        
         Food foodInfo;
         Lamp lightInfo;
         Vector3 vectDir;
         Vector2 stopVect;
+
+        int state;
         float sinVal;
+        float x, y;
+
+        
 
         for (int i = 0; i < cucarachas.Count; i++)
         {
@@ -69,8 +86,10 @@ public class IACucaManager : MonoBehaviour
 
                         sinVal = cuca.GetIA().sinValue;
                         stopVect = new Vector2(cuca.rb.transform.forward.x, cuca.rb.transform.forward.z);
+                        x = generateNormalRandom(0.0f, 0.5f);
+                        y = generateNormalRandom(0.0f, 0.5f);
 
-                        cuca.ChangeDirectionIA(new Vector2((stopVect.x + Random.Range(-1.0f,1.0f))/2, (stopVect.x + Random.Range(-1.0f, 1.0f))/2 ));
+                        cuca.ChangeDirectionIA(new Vector2(stopVect.x + x, stopVect.y + y));
 
                         if (cuca.isInsideLight)
                         {
@@ -125,8 +144,8 @@ public class IACucaManager : MonoBehaviour
                         }
                         else
                         {
-                            randInt = Random.Range(1, 6);
-                            if (randInt == 1 || randInt == 2)
+                            randInt = Random.Range(0, 2);
+                            if (randInt == 1)
                             {
                                 state = 3;
                                 break;
@@ -138,8 +157,8 @@ public class IACucaManager : MonoBehaviour
                 case 3: // Forward food with variations in direction
                     {
 
-                        Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f)); 
-
+                        //Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
+                                                
                         foodInfo = cuca.GetFood();
                         if (!foodInfo)
                         {
@@ -148,8 +167,8 @@ public class IACucaManager : MonoBehaviour
                         }
                         vectDir = -(cuca.rb.transform.position - foodInfo.transform.position);
                         vectDir.Normalize();
-                                                
-                        cuca.ChangeDirectionIA(new Vector2(vectDir.x + vectVariation.x, vectDir.z + vectVariation.y));
+
+                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + Random.Range(-0.2f, 0.2f)) , (vectDir.y + Random.Range(-0.2f, 0.2f))));
 
                         if (cuca.isInsideLight)
                         {
@@ -167,7 +186,6 @@ public class IACucaManager : MonoBehaviour
                             break;
                         }
 
-                        break;
                     }
                 
                 //======-----
@@ -214,7 +232,7 @@ public class IACucaManager : MonoBehaviour
 
                 case 5: // Flee the light but with variations
                     {
-                        Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
+                        //Vector2 vectVariation = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
 
                         lightInfo = cuca.GetLamp();
                         if (!lightInfo)
@@ -225,8 +243,8 @@ public class IACucaManager : MonoBehaviour
                         vectDir = (cuca.rb.transform.position - lightInfo.transform.position);
                         vectDir.Normalize();
 
-                        cuca.ChangeDirectionIA(new Vector2(vectDir.x + vectVariation.x, vectDir.z + vectVariation.y));
-                        
+                        cuca.ChangeDirectionIA(new Vector2((vectDir.x + Random.Range(-0.2f, 0.2f)), (vectDir.y + Random.Range(-0.2f, 0.2f))));
+
                         if (!cuca.isInsideLight && cuca.isInsideFood)
                         {
                             state = 2;
