@@ -431,6 +431,18 @@ MonoBehaviour:
     prefab: {fileID: 1462658937139620, guid: a7ca044746f1a7e498ffae7855c207e1, type: 2}
     size: 1000
     shouldExpand: 1
+  - tag: 3
+    prefab: {fileID: 1540032493031040, guid: 34acc8b9e88d85c4ba094d034ba55036, type: 2}
+    size: 1000
+    shouldExpand: 1
+  - tag: 2
+    prefab: {fileID: 1647027819164116, guid: f89fdf98d37a6a84ca9c4b673041c34f, type: 2}
+    size: 50
+    shouldExpand: 1
+  - tag: 5
+    prefab: {fileID: 1038930551470268, guid: 91501869b9eceeb40878e28f71448ade, type: 2}
+    size: 300
+    shouldExpand: 1
 --- !u!114 &114495011466167138
 MonoBehaviour:
   m_ObjectHideFlags: 1
