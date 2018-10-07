@@ -176,7 +176,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 
     private void GameOver()
     {
-        Debug.Log("ici game over !");    
+        //Debug.Log("ici game over !");    
     }
 
     private void OnDisable()

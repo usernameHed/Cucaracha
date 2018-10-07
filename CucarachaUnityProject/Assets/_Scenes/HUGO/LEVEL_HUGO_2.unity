@@ -1508,7 +1508,7 @@ MonoBehaviour:
   cameraObject: {fileID: 168356576}
   sceneToLoad:
   - active: 1
-    scene: LEVEL_2
+    scene: LEVEL_HUGO_3
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
@@ -1517,7 +1517,16 @@ MonoBehaviour:
     swapWhenLoaded: 0
     sceneToChargeAfterAdditive: 
   - active: 1
-    scene: MENU
+    scene: Menu
+    loadAtStart: 0
+    loadAfterXSecond: 0
+    fade: 1
+    fadeTime: 1.5
+    additive: 0
+    swapWhenLoaded: 0
+    sceneToChargeAfterAdditive: 
+  - active: 1
+    scene: LEVEL_HUGO_2
     loadAtStart: 0
     loadAfterXSecond: 0
     fade: 1
@@ -2501,7 +2510,7 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!4 &1818318781 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4207767575009842, guid: 05df875e7667ce44a8e3881fadd35cee,
+  m_CorrespondingSourceObject: {fileID: 4633934414932832, guid: 05df875e7667ce44a8e3881fadd35cee,
     type: 2}
   m_PrefabInternal: {fileID: 1818318780}
 --- !u!1 &1833890220
