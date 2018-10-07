@@ -11,9 +11,12 @@ public class Blender : MonoBehaviour
   public Animator animator;
   private Slider sliderScript;
 
+  AudioSource source;
+
     // Use this for initialization
     void Start()
     {
+        source = GetComponent<AudioSource>();
         Slider = CucarachaManager.Instance.Slider;
 
         sliderScript = Slider.GetComponent<Slider>();
@@ -37,6 +40,7 @@ public class Blender : MonoBehaviour
 
             juiceQuantity++;
             ChangeSlider();
+            source.volume = .6f;
 
             Debug.Log("Juice quantity : " + juiceQuantity);
 
@@ -48,6 +52,12 @@ public class Blender : MonoBehaviour
             }
 
         }
+    }
+
+    private void Update()
+    {
+        if(source.volume > 0)
+            source.volume -= Time.deltaTime * 2;
     }
 
     void ChangeSlider()
