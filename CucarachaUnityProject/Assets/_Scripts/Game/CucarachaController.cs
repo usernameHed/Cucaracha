@@ -6,6 +6,8 @@ using UnityEngine;
 public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
 {
     [SerializeField]
+    GameObject deathSound;
+    [SerializeField]
     private float speedPlayer = 5;          //speed of player
     [SerializeField]
     private float rotationSpeed = 5;          //rotation speed of player
@@ -254,8 +256,6 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         //EventManager.StopListening(GameData.Event.GameOver, GameWin);
     }
 
-
-
     public void OnDesactivePool()
     {
         
@@ -280,5 +280,8 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);
         gameObject.SetActive(false);
+
+        GameObject ds = Instantiate(deathSound);
+        Destroy(ds, 1);
     }
 }

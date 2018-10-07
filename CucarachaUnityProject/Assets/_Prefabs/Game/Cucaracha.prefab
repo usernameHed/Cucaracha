@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fceeed868e6b15489fcc11d69059719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 1770032348408916, guid: 2cd640d13a06bbc489b539e376168c44, type: 2}
   speedPlayer: 1200
   rotationSpeed: 500
   radiusWhenEating: 0.25
