@@ -23,7 +23,6 @@ public class Blender : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(GameData.Layers.Cucaracha.ToString()))
         {
-            animator.SetTrigger("RoachCollision");
 
             CucarachaController cuca = collision.gameObject.GetComponent<CucarachaController>();
             if (!cuca)
@@ -31,6 +30,7 @@ public class Blender : MonoBehaviour
 
             if (cuca.IsDying)
                 return;
+            animator.SetTrigger("RoachCollision");
 
 
             juiceQuantity++;
