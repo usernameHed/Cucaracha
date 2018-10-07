@@ -36,7 +36,7 @@ public class Blender : MonoBehaviour
 
             Debug.Log("Juice quantity : " + juiceQuantity);
 
-            cuca.Kill();
+            cuca.Kill(false);
 
             if (juiceQuantity > maximumScore)
             {

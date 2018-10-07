@@ -255,15 +255,21 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         
     }
 
-    [Button]
     public void Kill()
+    {
+        Kill(true);
+    }
+
+    [Button]
+    public void Kill(bool addCadavre)
     {
         if (isDying)
             return;
 
         isDying = true;
 
-        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
+        if (addCadavre)
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
 
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);

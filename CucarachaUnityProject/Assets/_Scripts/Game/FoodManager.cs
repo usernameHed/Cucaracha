@@ -9,9 +9,21 @@ public class FoodManager : SingletonMono<FoodManager>
     [SerializeField]
     private GameObject prefabsFood;
 
+    [SerializeField]
+    private List<Food> foodList = new List<Food>();
+
     public void Init()
     {
         InitUI();
+    }
+
+    public void AddOne()
+    {
+
+    }
+    public void DeleteOne()
+    {
+
     }
 
     /// <summary>

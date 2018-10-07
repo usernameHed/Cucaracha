@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: {fileID: 114349781028353714}
   isDeadCuca: 1
-  weight: 0.1
+  weight: 0.7
   isKilled: 0
 --- !u!135 &135051691952392980
 SphereCollider:
