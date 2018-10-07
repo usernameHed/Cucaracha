@@ -7,6 +7,8 @@ public class Food : MonoBehaviour, IKillable
 {
     private List<CucarachaController> cucaInside = new List<CucarachaController>();
 
+    public float weight = 1.0f;
+
     // Use this for initialization
     private void OnEnable()
     {

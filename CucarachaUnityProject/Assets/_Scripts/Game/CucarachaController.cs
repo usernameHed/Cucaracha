@@ -26,6 +26,10 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [SerializeField, ReadOnly]
     public Lamp refLamp = null;
 
+    [SerializeField]
+    private bool isDying = false;
+    public bool IsDying { get { return (isDying); } }
+
     public Food GetFood() { return (refFood); }
     public Lamp GetLamp() { return (refLamp); }
 
@@ -71,6 +75,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         sphereCollider = rb.GetComponent<SphereCollider>();
 
         radiusSphere = sphereCollider.radius;
+        isDying = false;
         //EventManager.StartListening(GameData.Event.GameWin, GameOver);
     }
 
@@ -243,6 +248,11 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
     [Button]
     public void Kill()
     {
+        if (isDying)
+            return;
+
+        isDying = true;
+
         CucarachaManager.Instance.RemoveCuca(this);
         transform.SetParent(ObjectsPooler.Instance.transform);
         gameObject.SetActive(false);
