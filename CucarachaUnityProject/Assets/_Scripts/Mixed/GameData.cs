@@ -31,6 +31,7 @@ public static class GameData
         DeadCuca,
         DeathParticle,
         BloodSplash,
+        Bump,
     }
 
     public enum Layers

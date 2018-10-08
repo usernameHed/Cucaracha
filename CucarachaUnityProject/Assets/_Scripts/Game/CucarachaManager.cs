@@ -7,6 +7,8 @@ using UnityEngine.UI;
 [TypeInfoBox("[ILevelLocal] Manage Setup Scene behaviour")]
 public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
 {
+    public bool gamePaused = false;
+
     [SerializeField]
     private int numberCucarachaLevel = 300;
 
@@ -108,6 +110,7 @@ public class CucarachaManager : SingletonMono<CucarachaManager>, ILevelLocal
         maximumScore = juice.maxInput * (percentToWin / 100);
         isWin = false;
         isLose = false;
+        gamePaused = false;
     }
 
     [Button]

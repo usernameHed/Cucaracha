@@ -38,6 +38,11 @@ public class LifeFood : MonoBehaviour, IKillable
             {
                 soundVolume = .5f;
                 realLifeFood--;
+                if (Random.Range(0, 10) < 1)
+                {
+                    GameObject bump = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Bump, transform.position, Quaternion.identity, ObjectsPooler.Instance.transform);
+                }
+                    
                 //Debug.Log("life food : " + realLifeFood);
             }
 

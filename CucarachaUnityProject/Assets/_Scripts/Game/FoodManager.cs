@@ -24,9 +24,18 @@ public class FoodManager : SingletonMono<FoodManager>
     [SerializeField]
     AudioSource m_sourceOk, m_sourceError;
 
+    private bool enableScript = true;
+
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameData.Event.GameWin, DesactiveScript);
+        EventManager.StartListening(GameData.Event.GameOver, DesactiveScript);
+    }
+
     public void Init()
     {
         foodUI.Clear();
+        enableScript = true;
         parentFoodUI.transform.ClearChild();
         for (int i = 0; i < foodNumber; i++)
         {
@@ -35,6 +44,11 @@ public class FoodManager : SingletonMono<FoodManager>
         }
 
         InitUI();
+    }
+
+    private void DesactiveScript()
+    {
+        enableScript = false;
     }
 
     public void AddOne(Food food)
@@ -115,8 +129,10 @@ public class FoodManager : SingletonMono<FoodManager>
                 pos = GameManager.Instance.CameraMain.ScreenToWorldPoint(pos);
                 pos.y = 0;
                 //GameObject foodObject = Instantiate(prefabsFood, pos, Quaternion.identity, transform);
-                GameObject foodObject = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Food, pos, Quaternion.identity, transform);
-        
+                GameObject foodObject = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Food, pos, Quaternion.identity, ObjectsPooler.Instance.transform);
+
+                GameObject bump = ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.Bump, pos, Quaternion.identity, ObjectsPooler.Instance.transform);
+
                 Food food = foodObject.GetComponent<Food>();
                 food.addedFromLevel = false;
 
@@ -139,6 +155,15 @@ public class FoodManager : SingletonMono<FoodManager>
     // Update is called once per frame
     void Update ()
     {
+        if (!enableScript || CucarachaManager.Instance.gamePaused)
+            return;
+
         HandleFood();
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(GameData.Event.GameWin, DesactiveScript);
+        EventManager.StopListening(GameData.Event.GameOver, DesactiveScript);
     }
 }

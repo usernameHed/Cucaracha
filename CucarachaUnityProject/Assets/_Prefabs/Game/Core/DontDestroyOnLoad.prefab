@@ -443,6 +443,10 @@ MonoBehaviour:
     prefab: {fileID: 1038930551470268, guid: 91501869b9eceeb40878e28f71448ade, type: 2}
     size: 300
     shouldExpand: 1
+  - tag: 6
+    prefab: {fileID: 1551932104604348, guid: 08ad5b94817038a44a07f56bc17f73a3, type: 2}
+    size: 50
+    shouldExpand: 1
 --- !u!114 &114495011466167138
 MonoBehaviour:
   m_ObjectHideFlags: 1

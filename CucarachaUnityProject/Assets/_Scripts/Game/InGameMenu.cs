@@ -23,6 +23,7 @@ public class InGameMenu : MonoBehaviour {
 		if (Panel == null)
 			return;
 		visible = !visible;
+        CucarachaManager.Instance.gamePaused = visible;
 		Panel.SetActive (visible);
 	}
 

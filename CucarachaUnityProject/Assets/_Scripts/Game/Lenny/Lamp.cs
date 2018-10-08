@@ -17,12 +17,23 @@ public class Lamp : MonoBehaviour, IKillable
     [SerializeField]
     AudioSource m_sourceOn, m_sourceOff;
 
+    private bool enableScript = true;
+
     // Use this for initialization
     private void OnEnable()
     {
+        EventManager.StartListening(GameData.Event.GameWin, DesactiveScript);
+        EventManager.StartListening(GameData.Event.GameOver, DesactiveScript);
+
         ActiveLight(false);
         CucarachaManager.Instance.AddLamp(this);
         cucaInside.Clear();
+        enableScript = true;
+    }
+
+    private void DesactiveScript()
+    {
+        enableScript = false;
     }
 
     private void OnTriggerStay(Collider other)
@@ -108,6 +119,9 @@ public class Lamp : MonoBehaviour, IKillable
 
     private void Update()
     {
+        if (!enableScript || CucarachaManager.Instance.gamePaused)
+            return;
+
         PosMouse();
         InputMouse();
     }
@@ -115,5 +129,11 @@ public class Lamp : MonoBehaviour, IKillable
     public void Kill()
     {
         CucarachaManager.Instance.RemoveLamp(this);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(GameData.Event.GameWin, DesactiveScript);
+        EventManager.StopListening(GameData.Event.GameOver, DesactiveScript);
     }
 }
