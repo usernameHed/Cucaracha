@@ -89,7 +89,7 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         radiusSphere = sphereCollider.radius;
         rb.transform.localPosition = Vector3.zero;
         isDying = false;
-        animator.SetTrigger("Idle");
+        //animator.SetTrigger("Idle");
         enabledScript = true;
         //EventManager.StartListening(GameData.Event.GameWin, GameOver);
         //EventManager.StartListening(GameData.Event.GameOver, GameOver);

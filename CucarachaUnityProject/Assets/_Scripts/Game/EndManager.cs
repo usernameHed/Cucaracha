@@ -17,7 +17,8 @@ public class EndManager : MonoBehaviour {
 	AudioSource m_loose;
 
 	private void OnEnable () {
-		EventManager.StartListening (GameData.Event.GameOver, GameOver);
+        m_audioOn.TransitionTo(1);
+        EventManager.StartListening (GameData.Event.GameOver, GameOver);
 		EventManager.StartListening (GameData.Event.GameWin, GameWin);
 
 		GameOverPanel.alpha = 0;
@@ -33,7 +34,8 @@ public class EndManager : MonoBehaviour {
 		ShowLiquid (true);
 		StartCoroutine (ShowCanvasGroup (GameOverPanel));
 		m_loose.Play();
-	}
+        m_audioOff.TransitionTo(3);
+    }
 
 	private void GameWin () {
 		Debug.Log ("GAME WIN");
@@ -45,8 +47,8 @@ public class EndManager : MonoBehaviour {
 		{
 			StartCoroutine (ShowCanvasGroup (NextLevelPanel));
 		}
-
-	}
+        m_audioOff.TransitionTo(3);
+    }
 
 	private IEnumerator ShowCanvasGroup (CanvasGroup group, float delay = 1.0f) {
 		group.interactable = true;
@@ -59,18 +61,18 @@ public class EndManager : MonoBehaviour {
 	}
 
 	public void Menu () {
-		GameManager.Instance.SceneManagerLocal.PlayPrevious ();
-		m_audioOn.TransitionTo(3);
+        m_audioOn.TransitionTo(1);
+        GameManager.Instance.SceneManagerLocal.PlayPrevious ();
 	}
 
 	public void Restart () {
-		GameManager.Instance.SceneManagerLocal.PlayIndex(2);
-		m_audioOn.TransitionTo(3);
+        m_audioOn.TransitionTo(1);
+        GameManager.Instance.SceneManagerLocal.PlayIndex(2);
 	}
 
 	public void NextLevel () {
-		GameManager.Instance.SceneManagerLocal.PlayNext();
-		m_audioOn.TransitionTo(3);
+        m_audioOn.TransitionTo(1);
+        GameManager.Instance.SceneManagerLocal.PlayNext();
 	}
 
 	public void Quit () {
@@ -84,6 +86,5 @@ public class EndManager : MonoBehaviour {
 
 	private void ShowLiquid (bool show) {
 		LiquidEndAnimator.SetTrigger (show ? "End" : "Restart");
-		m_audioOff.TransitionTo(3);
 	}
 }
