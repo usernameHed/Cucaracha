@@ -14,7 +14,10 @@ public class EndManager : MonoBehaviour {
 	AudioMixerSnapshot m_audioOn, m_audioOff;
 
 	[SerializeField]
-	AudioSource m_loose;
+	AudioClip m_clipLoose, m_clipWin;
+
+	[SerializeField]
+	AudioSource m_source;
 
 	private void OnEnable () {
         m_audioOn.TransitionTo(1);
@@ -33,13 +36,17 @@ public class EndManager : MonoBehaviour {
 		Debug.Log ("GAME OVER");
 		ShowLiquid (true);
 		StartCoroutine (ShowCanvasGroup (GameOverPanel));
-		m_loose.Play();
+		m_source.clip = m_clipLoose;
+		m_source.Play();
         m_audioOff.TransitionTo(3);
     }
 
 	private void GameWin () {
 		Debug.Log ("GAME WIN");
 		ShowLiquid (true);
+
+		m_source.clip = m_clipWin;
+		m_source.Play();
 
 		//if (CucarachaManager.Instance.isLastLevel) {
 		//NextLevel ();

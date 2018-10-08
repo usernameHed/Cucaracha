@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213090012335016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,7 +53,8 @@ AudioSource:
   m_GameObject: {fileID: 1213090012335016}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243728221040118584, guid: b9464ac5716573844bf2febbf9edc071,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c8eb8501e09e1044292ef33970a44da8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
@@ -243,7 +244,8 @@ AudioSource:
   m_GameObject: {fileID: 1213090012335016}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243728221040118584, guid: b9464ac5716573844bf2febbf9edc071,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 3988318361302d249ba69fc265a084bf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -341,7 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ddb8c0c6f5e8b4fa9bcb3ef6d4e54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberCucarachaLevel: 15
+  gamePaused: 0
+  numberCucarachaLevel: 250
   percentToWin: 100
   maximumScore: 0
   juice: {fileID: 0}
@@ -386,7 +389,7 @@ MonoBehaviour:
     type: 2}
   prefabsUI: {fileID: 1408892267726858, guid: 30f3f8d36cb63e74ca1d758c7ed8143a, type: 2}
   parentFoodUI: {fileID: 0}
-  foodNumber: 3
+  foodNumber: 2
   foodList: []
   m_sourceOk: {fileID: 82428479117809470}
   m_sourceError: {fileID: 82343284842118244}
