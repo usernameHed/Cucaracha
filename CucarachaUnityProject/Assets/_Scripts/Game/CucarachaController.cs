@@ -91,6 +91,8 @@ public class CucarachaController : MonoBehaviour, IPooledObject, IKillable
         isDying = false;
         //animator.SetTrigger("Idle");
         enabledScript = true;
+        isInsideFood = false;
+        isInsideLight = false;
         //EventManager.StartListening(GameData.Event.GameWin, GameOver);
         //EventManager.StartListening(GameData.Event.GameOver, GameOver);
         //private Vector3 dirCura = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);

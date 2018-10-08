@@ -78,6 +78,7 @@ public class ObjectsPooler : SingletonMono<ObjectsPooler>
                 {
                     Debug.Log("ici set le transform parent de: " + obj.name);
                     obj.transform.SetParent(transform);
+                    obj.SetActive(false);
                 }
                 if (obj.activeSelf)
                 {
@@ -89,6 +90,7 @@ public class ObjectsPooler : SingletonMono<ObjectsPooler>
                     }
                     else
                     {
+                        Debug.Log("desactive ?");
                         obj.SetActive(false);
                     }
                 }

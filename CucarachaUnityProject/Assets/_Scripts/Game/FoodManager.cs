@@ -105,9 +105,9 @@ public class FoodManager : SingletonMono<FoodManager>
 
     private void HandleFood()
     {
-        if (Input.GetMouseButtonUp(1) && CleanClick())
+        if (Input.GetMouseButtonUp(1))
         {
-            if(CanAdd())
+            if(CleanClick() && CanAdd())
             {
                 Debug.Log("create food");
                 Vector3 pos = Input.mousePosition;
@@ -127,7 +127,7 @@ public class FoodManager : SingletonMono<FoodManager>
             {
                 m_sourceError.Play();
             }
-        }        
+        }
     }
 
     private IEnumerator MoveFood(GameObject food)
